@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 80FAA3F12E47A05B00405CA2 /* Build configuration list for PBXProject "Grayscale" */;
+			buildConfigurationList = 80FAA3F12E47A05B00405CA2 /* Build configuration list for PBXProject "ToneDown" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -521,7 +521,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		80FAA3F12E47A05B00405CA2 /* Build configuration list for PBXProject "Grayscale" */ = {
+		80FAA3F12E47A05B00405CA2 /* Build configuration list for PBXProject "ToneDown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80FAA4152E47A05D00405CA2 /* Debug */,
