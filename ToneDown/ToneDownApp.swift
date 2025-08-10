@@ -10,10 +10,19 @@ import SwiftUI
 
 @main
 struct ToneDownApp: App {
+    @StateObject private var appState = AppState()
+    
     var body: some Scene {
         WindowGroup {
-            HomeView()
-                .preferredColorScheme(nil) // поддерживаем и светлую, и тёмную
+            Group {
+                if appState.hasSeenOnboarding {
+                    HomeView()
+                } else {
+                    OnboardingView()
+                }
+            }
+            .environmentObject(appState)
+            .preferredColorScheme(nil) // поддерживаем и светлую, и тёмную
         }
     }
 }
