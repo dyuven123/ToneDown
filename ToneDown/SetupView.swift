@@ -1,6 +1,6 @@
 //
 //  SetupView.swift
-//  Grayscale
+//  ToneDown
 //
 //  Created by Dyuven on 10.08.2025.
 //

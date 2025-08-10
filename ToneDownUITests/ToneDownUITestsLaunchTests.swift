@@ -1,13 +1,13 @@
 //
-//  GrayscaleUITestsLaunchTests.swift
-//  GrayscaleUITests
+//  ToneDownUITestsLaunchTests.swift
+//  ToneDownUITests
 //
 //  Created by Dyuven on 10.08.2025.
 //
 
 import XCTest
 
-final class GrayscaleUITestsLaunchTests: XCTestCase {
+final class ToneDownUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
