@@ -1,0 +1,106 @@
+/* 
+  Localizable.strings
+  ToneDown - Русский
+*/
+
+// MARK: - App Name & Description
+"app.name" = "ToneDown";
+"app.tagline" = "Сделай телефон менее вкусным одним тапом";
+"app.description" = "Переключает экран в оттенки серого через Команды iOS";
+
+// MARK: - Home Screen
+"home.title" = "ToneDown";
+"home.subtitle" = "Сделай телефон менее вкусным одним тапом";
+"home.button.setup" = "Настроить";
+"home.button.toggle" = "ВКЛ / ВЫКЛ Серый режим";
+"home.button.toggle.subtitle" = "жмякни, чтобы переключить";
+"home.button.add.command" = "добавить команду";
+"home.footer.setup" = "Нажми на большую кнопку выше, чтобы настроить команду";
+"home.footer.works" = "Работает через команду «Переключить светофильтры» в Командах";
+
+// MARK: - Premium Block
+"premium.title" = "💫 Автоматизация • Никаких подписок!";
+"premium.demo.button" = "🎬 Посмотреть Demo";
+"premium.learn.button" = "Узнать больше";
+
+// MARK: - Setup Screen
+"setup.title" = "Настройка";
+"setup.button.done" = "Готово";
+"setup.create.title" = "Создать команду";
+"setup.create.subtitle" = "Откроет готовую команду\nдля импорта одним нажатием";
+"setup.button.add" = "Добавить команду";
+"setup.info.title" = "💡 **Что произойдет:**";
+"setup.info.description" = "Откроется экран импорта готовой команды\nтебе нужно будет только нажать \"Добавить\"";
+"setup.after.title" = "После добавления команды:";
+"setup.button.added" = "✅ Я добавил команду";
+
+// MARK: - Demo Screen
+"demo.title" = "🎬 Реальные сценарии";
+"demo.subtitle" = "Premium автоматизация • Никаких подписок!";
+"demo.scenario.tiktok.title" = "📱 Открыли TikTok?";
+"demo.scenario.tiktok.subtitle" = "Мгновенно чёрно-белый экран";
+"demo.scenario.tiktok.description" = "Меньше соблазна = меньше времени в ленте";
+"demo.scenario.exit.title" = "🏠 Вышли из TikTok";
+"demo.scenario.exit.subtitle" = "Цвета автоматически вернулись";
+"demo.scenario.exit.description" = "Только нужные приложения остаются яркими";
+"demo.scenario.work.title" = "💼 Focus \"Работа\"";
+"demo.scenario.work.subtitle" = "9:00 - весь телефон чёрно-белый";
+"demo.scenario.work.description" = "Полная концентрация без отвлечений";
+"demo.scenario.sleep.title" = "🌅 Вечерний режим";
+"demo.scenario.sleep.subtitle" = "21:00 - автоматически серый экран";
+"demo.scenario.sleep.description" = "Здоровый сон без яркого света";
+"demo.button.buy" = "✨ Купить навсегда";
+"demo.price" = "999₽ навсегда";
+"demo.price.details" = "999₽ навсегда • Никаких подписок";
+
+// MARK: - App Content Simulations
+"demo.app.tiktok" = "TikTok";
+"demo.app.home" = "Домой";
+"demo.app.work" = "Работа";
+"demo.app.sleep" = "Сон";
+"demo.content.viral" = "Viral Video";
+"demo.content.username" = "@viral_creator";
+"demo.content.homescreen" = "Главный экран";
+"demo.content.focus.active" = "Focus активен";
+"demo.content.sleep.mode" = "Режим сна";
+
+// MARK: - Accessibility
+"accessibility.main.button.setup" = "Настроить команду";
+"accessibility.main.button.toggle" = "Переключить режим оттенков серого";
+"accessibility.main.hint.setup" = "Открывает экран настройки команды";
+"accessibility.main.hint.toggle" = "Открывает команду Toggle Grayscale в Командах";
+"accessibility.description" = "Описание: сделать телефон менее привлекательным одним нажатием";
+
+// MARK: - Buttons
+"button.close" = "Закрыть";
+"button.next" = "Далее";
+"button.previous" = "Назад";
+
+// MARK: - Tabs
+"tab.home" = "Главная";
+"tab.automation" = "Автоматизация";
+
+// MARK: - Automation Screen
+"automation.title" = "Автоматизация";
+"automation.subtitle" = "Умная автоматизация";
+"automation.description" = "Настройте один раз, работает всегда. Никаких ручных переключений.";
+"automation.demo.title" = "Посмотрите автоматизацию в действии";
+"automation.features.title" = "Premium возможности";
+"automation.no.subscriptions" = "Никаких подписок!";
+
+// MARK: - Automation Features
+"automation.feature.schedule" = "Режим расписания";
+"automation.feature.schedule.desc" = "Автоматическое вкл/выкл по времени";
+"automation.feature.apps" = "Триггеры приложений";
+"automation.feature.apps.desc" = "Умная активация для приложений";
+"automation.feature.focus" = "Focus режимы";
+"automation.feature.focus.desc" = "Интеграция с системным Focus";
+"automation.feature.location" = "По геолокации";
+"automation.feature.location.desc" = "Активация по местам";
+
+// MARK: - Premium Features (for README)
+"premium.feature.schedule" = "🕘 Автоматический режим по времени - включение в 21:00, отключение в 8:00";
+"premium.feature.apps" = "📱 Smart app triggers - автоматический grayscale при открытии TikTok, Instagram";
+"premium.feature.focus" = "💼 Focus режимы - интеграция с \"Работа\", \"Сон\", \"Не беспокоить\"";
+"premium.feature.location" = "⚡ Геолокация триггеры - автоматика на работе, дома, в спортзале";
+"premium.feature.rules" = "🎯 Умные правила - настройте один раз, работает всегда";

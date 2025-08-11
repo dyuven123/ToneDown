@@ -11,6 +11,7 @@ import SwiftUI
 class AppState: ObservableObject {
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     @AppStorage("hasCompletedSetup") var hasCompletedSetup: Bool = false
+    @AppStorage("hasPremium") var hasPremium: Bool = false
     
     func completeOnboarding() {
         hasSeenOnboarding = true
@@ -18,5 +19,9 @@ class AppState: ObservableObject {
     
     func completeSetup() {
         hasCompletedSetup = true
+    }
+    
+    func purchasePremium() {
+        hasPremium = true
     }
 }

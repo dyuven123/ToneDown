@@ -8,32 +8,38 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var appState: AppState
     @State private var isPressed = false
     @State private var showSetup = false
+    @State private var showDemo = false
 
     var body: some View {
         NavigationView {
             VStack(spacing: 28) {
                 // Header
                 VStack(spacing: 8) {
-                    Text("ToneDown")
+                    Text(L10n.Home.title)
                         .font(DS.Typo.title)
                         .foregroundColor(Color.primary)
                         .accessibilityAddTraits(.isHeader)
 
-                    Text("Сделай ленты менее «вкусными» одним тапом")
+                    Text(L10n.Home.subtitle)
                         .font(DS.Typo.subtitle)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 24)
-                        .accessibilityLabel("Описание: сделать ленты менее привлекательными одним нажатием")
+                        .accessibilityLabel(L10n.Accessibility.description)
                 }
 
                 Spacer(minLength: 16)
 
                 // Big round button
                 Button {
-                    ShortcutsRunner.runShortcut(named: "Toggle Grayscale")
+                    if appState.hasCompletedSetup {
+                        ShortcutsRunner.runShortcut(named: "Toggle Grayscale")
+                    } else {
+                        showSetup = true
+                    }
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 } label: {
                     ZStack {
@@ -43,11 +49,21 @@ struct HomeView: View {
                             .shadow(color: DS.Shadow.soft, radius: 24, x: 0, y: 8)
 
                         VStack(spacing: 8) {
-                            Text("ON / OFF Grayscale")
-                                .font(.title2).bold()
-                            Text("жмякни, чтобы переключить")
-                                .foregroundColor(.secondary)
-                                .font(.callout)
+                            if appState.hasCompletedSetup {
+                                Text(L10n.Home.Button.toggle)
+                                    .font(.title2).bold()
+                                Text(L10n.Home.Button.toggleSubtitle)
+                                    .foregroundColor(.secondary)
+                                    .font(.callout)
+                            } else {
+                                Text("⚙️")
+                                    .font(.system(size: 64))
+                                Text(L10n.Home.Button.setup)
+                                    .font(.title2).bold()
+                                Text(L10n.Home.Button.addCommand)
+                                    .foregroundColor(.secondary)
+                                    .font(.callout)
+                            }
                         }
                         .padding(.horizontal, 16)
                         .multilineTextAlignment(.center)
@@ -61,30 +77,60 @@ struct HomeView: View {
                 }.onEnded { _ in
                     isPressed = false
                 })
-                .accessibilityLabel("Переключить режим оттенков серого")
-                .accessibilityHint("Открывает ярлык Toggle Grayscale в Командах")
+                .accessibilityLabel(appState.hasCompletedSetup ? L10n.Accessibility.MainButton.toggle : L10n.Accessibility.MainButton.setup)
+                .accessibilityHint(appState.hasCompletedSetup ? L10n.Accessibility.Hint.toggle : L10n.Accessibility.Hint.setup)
 
                 Spacer()
-
-                // Setup button
-                Button {
-                    showSetup = true
-                } label: {
-                    Text("⚙️ Настроить")
-                        .font(DS.Typo.button)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(DS.Color.accent)
-                        .foregroundColor(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                
+                // Premium Demo Block (показываем только после setup и без Premium)
+                if appState.hasCompletedSetup && !appState.hasPremium {
+                    VStack(spacing: 16) {
+                        Text(L10n.Premium.title)
+                            .font(.subheadline.weight(.medium))
+                        
+                        HStack(spacing: 12) {
+                            Button {
+                                showDemo = true
+                            } label: {
+                                HStack(spacing: 6) {
+                                    Text("🎬")
+                                    Text(L10n.Premium.Button.demo)
+                                        .font(.subheadline.weight(.medium))
+                                }
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 10)
+                                .background(DS.Color.accent.opacity(0.1))
+                                .foregroundColor(DS.Color.accent)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            }
+                            
+                            Button {
+                                showDemo = true
+                            } label: {
+                                HStack(spacing: 6) {
+                                    Text(L10n.Premium.Button.learn)
+                                        .font(.subheadline.weight(.medium))
+                                    Text("→")
+                                }
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 10)
+                                .background(Color.secondary.opacity(0.1))
+                                .foregroundColor(.primary)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            }
+                        }
+                    }
+                    .padding(.bottom, 20)
                 }
-                .padding(.horizontal, 20)
-                .accessibilityLabel("Открыть экран настройки")
 
-                Text("Работает через ярлык «Переключить светофильтры» в Командах")
+                Text(appState.hasCompletedSetup ? 
+                     L10n.Home.Footer.works :
+                     L10n.Home.Footer.setup)
                     .font(DS.Typo.caption)
                     .foregroundColor(.secondary)
                     .padding(.bottom, 12)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
 
             }
             .padding(.top, 24)
@@ -92,6 +138,9 @@ struct HomeView: View {
             .background(appBackground.ignoresSafeArea())
             .sheet(isPresented: $showSetup) {
                 SetupView()
+            }
+            .sheet(isPresented: $showDemo) {
+                DemoView()
             }
         }
         .navigationViewStyle(.stack)
@@ -117,4 +166,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environmentObject(AppState())
 }

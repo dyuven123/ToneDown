@@ -1,0 +1,107 @@
+/* 
+  Localizable.strings
+  ToneDown - English
+*/
+
+// MARK: - App Name & Description
+"app.name" = "ToneDown";
+"app.tagline" = "Make your phone less addictive with one tap";
+"app.description" = "Switches screen to grayscale through iOS Shortcuts";
+
+// MARK: - Home Screen
+"home.title" = "ToneDown";
+"home.subtitle" = "Make your phone less addictive with one tap";
+"home.button.setup" = "Set up";
+"home.button.toggle" = "ON / OFF Grayscale";
+"home.button.toggle.subtitle" = "tap to toggle";
+"home.button.add.command" = "add command";
+"home.footer.setup" = "Tap the big button above to set up the command";
+"home.footer.works" = "Works through «Toggle Color Filters» command in Shortcuts";
+
+// MARK: - Premium Block
+"premium.title" = "💫 Automation • No subscriptions ever!";
+"premium.demo.button" = "🎬 Watch Demo";
+"premium.learn.button" = "Learn more";
+
+// MARK: - Setup Screen
+"setup.title" = "Setup";
+"setup.button.done" = "Done";
+"setup.create.title" = "Create command";
+"setup.create.subtitle" = "Opens ready command\nfor import with one tap";
+"setup.button.add" = "Add command";
+"setup.info.title" = "💡 **What will happen:**";
+"setup.info.description" = "Import screen will open with ready command\nyou just need to tap \"Add\"";
+"setup.after.title" = "After adding the command:";
+"setup.button.added" = "✅ I added the command";
+
+// MARK: - Demo Screen
+"demo.title" = "🎬 Real scenarios";
+"demo.subtitle" = "Premium automation • No subscriptions ever!";
+"demo.scenario.tiktok.title" = "📱 Opened TikTok?";
+"demo.scenario.tiktok.subtitle" = "Instantly black & white screen";
+"demo.scenario.tiktok.description" = "Less temptation = less time in feed";
+"demo.scenario.exit.title" = "🏠 Exited TikTok";
+"demo.scenario.exit.subtitle" = "Colors automatically returned";
+"demo.scenario.exit.description" = "Only needed apps stay colorful";
+"demo.scenario.work.title" = "💼 Focus \"Work\"";
+"demo.scenario.work.subtitle" = "9:00 - entire phone black & white";
+"demo.scenario.work.description" = "Full concentration without distractions";
+"demo.scenario.sleep.title" = "🌅 Evening mode";
+"demo.scenario.sleep.subtitle" = "21:00 - automatic gray screen";
+"demo.scenario.sleep.description" = "Healthy sleep without bright light";
+"demo.button.buy" = "✨ Buy forever";
+"demo.price" = "999₽ forever";
+"demo.price.details" = "999₽ forever • No subscriptions";
+
+// MARK: - App Content Simulations
+"demo.app.tiktok" = "TikTok";
+"demo.app.home" = "Home";
+"demo.app.work" = "Work";
+"demo.app.sleep" = "Sleep";
+"demo.content.viral" = "Viral Video";
+"demo.content.username" = "@viral_creator";
+"demo.content.homescreen" = "Home Screen";
+"demo.content.focus.active" = "Focus active";
+"demo.content.sleep.mode" = "Sleep mode";
+
+// MARK: - Accessibility
+"accessibility.main.button.setup" = "Set up command";
+"accessibility.main.button.toggle" = "Toggle grayscale mode";
+"accessibility.main.hint.setup" = "Opens command setup screen";
+"accessibility.main.hint.toggle" = "Opens Toggle Grayscale command in Shortcuts";
+"accessibility.description" = "Description: make phone less attractive with one tap";
+
+// MARK: - Buttons
+"button.close" = "Close";
+"button.next" = "Next";
+"button.previous" = "Previous";
+
+// MARK: - Tabs
+"tab.home" = "Home";
+"tab.automation" = "Automation";
+
+// MARK: - Automation Screen
+"automation.title" = "Automation";
+"automation.subtitle" = "Smart automation";
+"automation.description" = "Set up once, works forever. No manual switching needed.";
+"automation.demo.title" = "See automation in action";
+"automation.features.title" = "Premium Features";
+"automation.no.subscriptions" = "No subscriptions ever!";
+
+// MARK: - Automation Features
+"automation.feature.schedule" = "Schedule Mode";
+"automation.feature.schedule.desc" = "Automatic on/off by time";
+"automation.feature.apps" = "App Triggers";
+"automation.feature.apps.desc" = "Smart activation per app";
+"automation.feature.focus" = "Focus Modes";
+"automation.feature.focus.desc" = "Integration with system Focus";
+"automation.feature.location" = "Location-based";
+"automation.feature.location.desc" = "Activate by places";
+
+// MARK: - Premium Features (for README)
+"premium.feature.schedule" = "🕘 Automatic schedule mode - turns on at 21:00, off at 8:00";
+"premium.feature.apps" = "📱 Smart app triggers - automatic grayscale when opening TikTok, Instagram";
+"premium.feature.focus" = "💼 Focus modes - integration with Work, Sleep, Do Not Disturb";
+"premium.feature.location" = "⚡ Location triggers - automation at work, home, gym";
+"premium.feature.rules" = "🎯 Smart rules - set up once, works forever";
+

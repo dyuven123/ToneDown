@@ -34,9 +34,9 @@ enum ShortcutsRunner {
         }
     }
     
-    // URL для автоматического создания ярлыка Toggle Grayscale
+    // URL для автоматического создания команды Toggle Grayscale
     static func createToggleGrayscaleShortcut() {
-        // Реальная ссылка на готовый ярлык Toggle Grayscale
+        // Реальная ссылка на готовую команду Toggle Grayscale
         if let url = URL(string: "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456") {
             UIApplication.shared.open(url, options: [:]) { success in
                 if !success {
@@ -52,7 +52,7 @@ enum ShortcutsRunner {
         }
     }
     
-    // Fallback: открыть создание нового ярлыка
+    // Fallback: открыть создание новой команды
     static func openCreateShortcut() {
         guard let url = URL(string: "shortcuts://create-shortcut") else { return }
         
@@ -63,7 +63,7 @@ enum ShortcutsRunner {
         }
     }
     
-    // Альтернативный метод: открыть галерею и найти похожие ярлыки
+    // Альтернативный метод: открыть галерею и найти похожие команды
     static func searchGrayscaleShortcuts() {
         // Поиск в галерее команд по ключевому слову "accessibility" или "grayscale"
         guard let url = URL(string: "shortcuts://gallery/search?query=accessibility") else {

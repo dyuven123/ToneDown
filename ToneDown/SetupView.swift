@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SetupView: View {
+    @EnvironmentObject var appState: AppState
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -16,21 +17,21 @@ struct SetupView: View {
                 
                 Spacer()
                 
-                // Центральная кнопка создания ярлыка
+                // Центральная кнопка создания команды
                 VStack(spacing: 16) {
                     Text("🚀")
                         .font(.system(size: 64))
                     
-                    Text("Создать ярлык")
+                    Text("Создать команду")
                         .font(.title.weight(.semibold))
                     
-                    Text("Откроет готовый ярлык\nдля импорта одним нажатием")
+                    Text("Откроет готовую команду\nдля импорта одним нажатием")
                         .font(.body)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                 }
                 
-                Button("Добавить ярлык") {
+                Button("Добавить команду") {
                     ShortcutsRunner.createToggleGrayscaleShortcut()
                 } 
                 .font(.title2.weight(.semibold))
@@ -49,12 +50,35 @@ struct SetupView: View {
                     Text("💡 **Что произойдет:**")
                         .font(.subheadline.weight(.medium))
                     
-                    Text("Откроется экран импорта готового ярлыка\nтебе нужно будет только нажать \"Добавить\"")
+                    Text("Откроется экран импорта готовой команды\nтебе нужно будет только нажать \"Добавить\"")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                 }
-                .padding(.bottom, 20)
+                
+                // Кнопка подтверждения после установки
+                if !appState.hasCompletedSetup {
+                    VStack(spacing: 16) {
+                        Text("После добавления команды:")
+                            .font(.subheadline.weight(.medium))
+                        
+                        Button {
+                            appState.completeSetup()
+                            dismiss()
+                        } label: {
+                            Text("✅ Я добавил команду")
+                                .font(.body.weight(.medium))
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 12)
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                }
+                
+                Spacer(minLength: 20)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationTitle("Настройка")

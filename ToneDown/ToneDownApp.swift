@@ -16,7 +16,7 @@ struct ToneDownApp: App {
         WindowGroup {
             Group {
                 if appState.hasSeenOnboarding {
-                    HomeView()
+                    MainTabView()
                 } else {
                     OnboardingView()
                 }
