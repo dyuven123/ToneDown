@@ -12,14 +12,14 @@
 "home.title" = "ToneDown";
 "home.subtitle" = "Make your phone less addictive with one tap";
 "home.button.setup" = "Set up";
-"home.button.toggle" = "ON / OFF Grayscale";
-"home.button.toggle.subtitle" = "tap to toggle";
+"home.button.toggle" = "Toggle Mode";
+"home.button.toggle.subtitle" = "Black & White mode";
 "home.button.add.command" = "add command";
 "home.footer.setup" = "Tap the big button above to set up the command";
 "home.footer.works" = "Works through «Toggle Color Filters» command in Shortcuts";
 
 // MARK: - Premium Block
-"premium.title" = "💫 Automation • No subscriptions ever!";
+"premium.title" = "💫 Automation • Buy once";
 "premium.demo.button" = "🎬 Watch Demo";
 "premium.learn.button" = "Learn more";
 
@@ -36,7 +36,7 @@
 
 // MARK: - Demo Screen
 "demo.title" = "🎬 Real scenarios";
-"demo.subtitle" = "Premium automation • No subscriptions ever!";
+"demo.subtitle" = "Premium automation • One purchase for all";
 "demo.scenario.tiktok.title" = "📱 Opened TikTok?";
 "demo.scenario.tiktok.subtitle" = "Instantly black & white screen";
 "demo.scenario.tiktok.description" = "Less temptation = less time in feed";
@@ -51,7 +51,7 @@
 "demo.scenario.sleep.description" = "Healthy sleep without bright light";
 "demo.button.buy" = "✨ Buy forever";
 "demo.price" = "999₽ forever";
-"demo.price.details" = "999₽ forever • No subscriptions";
+"demo.price.details" = "999₽ forever • All features";
 
 // MARK: - App Content Simulations
 "demo.app.tiktok" = "TikTok";
@@ -66,7 +66,7 @@
 
 // MARK: - Accessibility
 "accessibility.main.button.setup" = "Set up command";
-"accessibility.main.button.toggle" = "Toggle grayscale mode";
+"accessibility.main.button.toggle" = "Toggle black and white mode";
 "accessibility.main.hint.setup" = "Opens command setup screen";
 "accessibility.main.hint.toggle" = "Opens Toggle Grayscale command in Shortcuts";
 "accessibility.description" = "Description: make phone less attractive with one tap";
@@ -86,7 +86,7 @@
 "automation.description" = "Set up once, works forever. No manual switching needed.";
 "automation.demo.title" = "See automation in action";
 "automation.features.title" = "Premium Features";
-"automation.no.subscriptions" = "No subscriptions ever!";
+"automation.no.subscriptions" = "One purchase — all features!";
 
 // MARK: - Automation Features
 "automation.feature.schedule" = "Schedule Mode";
@@ -97,6 +97,22 @@
 "automation.feature.focus.desc" = "Integration with system Focus";
 "automation.feature.location" = "Location-based";
 "automation.feature.location.desc" = "Activate by places";
+
+// MARK: - App Triggers Screen
+"app.trigger.title" = "App Triggers";
+"app.trigger.subtitle" = "Smart automation for apps";
+"app.trigger.description" = "Automatically enable grayscale when opening selected apps";
+"app.trigger.active.count" = "active";
+"app.trigger.active.info" = "%d apps will trigger grayscale mode";
+"app.trigger.button.save" = "Save Settings";
+"app.trigger.button.close" = "Close";
+
+// MARK: - App Categories
+"app.trigger.category.all" = "All";
+"app.trigger.category.social" = "Social";
+"app.trigger.category.entertainment" = "Entertainment";
+"app.trigger.category.productivity" = "Productivity";
+"app.trigger.category.other" = "Other";
 
 // MARK: - Premium Features (for README)
 "premium.feature.schedule" = "🕘 Automatic schedule mode - turns on at 21:00, off at 8:00";

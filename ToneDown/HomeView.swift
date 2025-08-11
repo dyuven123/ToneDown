@@ -48,24 +48,29 @@ struct HomeView: View {
                             .frame(width: 280, height: 280)
                             .shadow(color: DS.Shadow.soft, radius: 24, x: 0, y: 8)
 
-                        VStack(spacing: 8) {
+                        VStack(spacing: 12) {
                             if appState.hasCompletedSetup {
                                 Text(L10n.Home.Button.toggle)
                                     .font(.title2).bold()
+                                    .lineLimit(2)
                                 Text(L10n.Home.Button.toggleSubtitle)
                                     .foregroundColor(.secondary)
                                     .font(.callout)
+                                    .lineLimit(1)
                             } else {
                                 Text("⚙️")
                                     .font(.system(size: 64))
                                 Text(L10n.Home.Button.setup)
                                     .font(.title2).bold()
+                                    .lineLimit(1)
                                 Text(L10n.Home.Button.addCommand)
                                     .foregroundColor(.secondary)
                                     .font(.callout)
+                                    .lineLimit(2)
                             }
                         }
-                        .padding(.horizontal, 16)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 16)
                         .multilineTextAlignment(.center)
                     }
                     .scaleEffect(isPressed ? 0.98 : 1.0)
@@ -92,11 +97,8 @@ struct HomeView: View {
                             Button {
                                 showDemo = true
                             } label: {
-                                HStack(spacing: 6) {
-                                    Text("🎬")
-                                    Text(L10n.Premium.Button.demo)
-                                        .font(.subheadline.weight(.medium))
-                                }
+                                Text(L10n.Premium.Button.demo)
+                                    .font(.subheadline.weight(.medium))
                                 .padding(.horizontal, 16)
                                 .padding(.vertical, 10)
                                 .background(DS.Color.accent.opacity(0.1))

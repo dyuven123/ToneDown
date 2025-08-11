@@ -79,7 +79,7 @@ struct PurchaseView: View {
                             .shadow(color: DS.Shadow.soft, radius: 12, x: 0, y: 4)
                     }
                     
-                    Text("Одна покупка навсегда • Никаких подписок")
+                    Text("Одна покупка навсегда • Весь функционал")
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)

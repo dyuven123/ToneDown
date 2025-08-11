@@ -12,14 +12,14 @@
 "home.title" = "ToneDown";
 "home.subtitle" = "Сделай телефон менее вкусным одним тапом";
 "home.button.setup" = "Настроить";
-"home.button.toggle" = "ВКЛ / ВЫКЛ Серый режим";
-"home.button.toggle.subtitle" = "жмякни, чтобы переключить";
+"home.button.toggle" = "Переключить режим";
+"home.button.toggle.subtitle" = "Черно-белый режим";
 "home.button.add.command" = "добавить команду";
 "home.footer.setup" = "Нажми на большую кнопку выше, чтобы настроить команду";
 "home.footer.works" = "Работает через команду «Переключить светофильтры» в Командах";
 
 // MARK: - Premium Block
-"premium.title" = "💫 Автоматизация • Никаких подписок!";
+"premium.title" = "💫 Автоматизация • Купи один раз";
 "premium.demo.button" = "🎬 Посмотреть Demo";
 "premium.learn.button" = "Узнать больше";
 
@@ -36,7 +36,7 @@
 
 // MARK: - Demo Screen
 "demo.title" = "🎬 Реальные сценарии";
-"demo.subtitle" = "Premium автоматизация • Никаких подписок!";
+"demo.subtitle" = "Premium автоматизация • Одна покупка на всё";
 "demo.scenario.tiktok.title" = "📱 Открыли TikTok?";
 "demo.scenario.tiktok.subtitle" = "Мгновенно чёрно-белый экран";
 "demo.scenario.tiktok.description" = "Меньше соблазна = меньше времени в ленте";
@@ -51,7 +51,7 @@
 "demo.scenario.sleep.description" = "Здоровый сон без яркого света";
 "demo.button.buy" = "✨ Купить навсегда";
 "demo.price" = "999₽ навсегда";
-"demo.price.details" = "999₽ навсегда • Никаких подписок";
+"demo.price.details" = "999₽ навсегда • Весь функционал";
 
 // MARK: - App Content Simulations
 "demo.app.tiktok" = "TikTok";
@@ -66,7 +66,7 @@
 
 // MARK: - Accessibility
 "accessibility.main.button.setup" = "Настроить команду";
-"accessibility.main.button.toggle" = "Переключить режим оттенков серого";
+"accessibility.main.button.toggle" = "Переключить черно-белый режим";
 "accessibility.main.hint.setup" = "Открывает экран настройки команды";
 "accessibility.main.hint.toggle" = "Открывает команду Toggle Grayscale в Командах";
 "accessibility.description" = "Описание: сделать телефон менее привлекательным одним нажатием";
@@ -86,7 +86,7 @@
 "automation.description" = "Настройте один раз, работает всегда. Никаких ручных переключений.";
 "automation.demo.title" = "Посмотрите автоматизацию в действии";
 "automation.features.title" = "Premium возможности";
-"automation.no.subscriptions" = "Никаких подписок!";
+"automation.no.subscriptions" = "Одна покупка — весь функционал!";
 
 // MARK: - Automation Features
 "automation.feature.schedule" = "Режим расписания";
@@ -97,6 +97,22 @@
 "automation.feature.focus.desc" = "Интеграция с системным Focus";
 "automation.feature.location" = "По геолокации";
 "automation.feature.location.desc" = "Активация по местам";
+
+// MARK: - App Triggers Screen
+"app.trigger.title" = "Триггеры приложений";
+"app.trigger.subtitle" = "Умная автоматизация для приложений";
+"app.trigger.description" = "Автоматически включать серый режим при открытии выбранных приложений";
+"app.trigger.active.count" = "активно";
+"app.trigger.active.info" = "%d приложений будут включать серый режим";
+"app.trigger.button.save" = "Сохранить настройки";
+"app.trigger.button.close" = "Закрыть";
+
+// MARK: - App Categories
+"app.trigger.category.all" = "Все";
+"app.trigger.category.social" = "Соцсети";
+"app.trigger.category.entertainment" = "Развлечения";
+"app.trigger.category.productivity" = "Продуктивность";
+"app.trigger.category.other" = "Другое";
 
 // MARK: - Premium Features (for README)
 "premium.feature.schedule" = "🕘 Автоматический режим по времени - включение в 21:00, отключение в 8:00";

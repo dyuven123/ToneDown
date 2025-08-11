@@ -182,5 +182,29 @@ struct L10n {
             static let locationDesc = "automation.feature.location.desc".localized
         }
     }
+    
+    // MARK: - App Triggers Screen
+    struct AppTrigger {
+        static let title = "app.trigger.title".localized
+        static let subtitle = "app.trigger.subtitle".localized
+        static let description = "app.trigger.description".localized
+        static let activeCount = "app.trigger.active.count".localized
+        static let activeInfo = { (count: Int) in 
+            String(format: "app.trigger.active.info".localized, count)
+        }
+        
+        struct Button {
+            static let save = "app.trigger.button.save".localized
+            static let close = "app.trigger.button.close".localized
+        }
+        
+        struct Category {
+            static let all = "app.trigger.category.all".localized
+            static let social = "app.trigger.category.social".localized
+            static let entertainment = "app.trigger.category.entertainment".localized
+            static let productivity = "app.trigger.category.productivity".localized
+            static let other = "app.trigger.category.other".localized
+        }
+    }
 }
 

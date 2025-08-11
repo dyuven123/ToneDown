@@ -11,14 +11,12 @@ struct AutomationView: View {
     @EnvironmentObject var appState: AppState
     @State private var showDemo = false
     @State private var showPurchase = false
+    @State private var showAppTriggers = false
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
-                    // Header
-                    headerSection
-                    
                     if appState.hasPremium {
                         // Premium content - настройки автоматизации
                         premiumContent
@@ -31,7 +29,7 @@ struct AutomationView: View {
                 .padding(.top, 16)
             }
             .navigationTitle(L10n.Automation.title)
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(.stack)
         .sheet(isPresented: $showDemo) {
@@ -40,61 +38,12 @@ struct AutomationView: View {
         .sheet(isPresented: $showPurchase) {
             PurchaseView()
         }
+        .sheet(isPresented: $showAppTriggers) {
+            AppTriggersView()
+        }
     }
     
-    // MARK: - Header Section
-    private var headerSection: some View {
-        VStack(spacing: 12) {
-            HStack {
-                Image(systemName: "wand.and.stars")
-                    .font(.title2)
-                    .foregroundColor(DS.Color.accent)
-                
-                Text(L10n.Automation.subtitle)
-                    .font(.headline.weight(.medium))
-                    .foregroundColor(.primary)
-                
-                Spacer()
-                
-                if appState.hasPremium {
-                    premiumBadge
-                }
-            }
-            
-            Text(L10n.Automation.description)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.leading)
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .padding(.vertical, 16)
-        .padding(.horizontal, 20)
-        .background(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(.ultraThinMaterial)
-        )
-    }
-    
-    // MARK: - Premium Badge
-    private var premiumBadge: some View {
-        HStack(spacing: 6) {
-            Image(systemName: "crown.fill")
-                .font(.caption)
-            Text("Premium")
-                .font(.caption.weight(.medium))
-        }
-        .foregroundColor(.white)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 6)
-        .background(
-            LinearGradient(
-                colors: [DS.Color.accent, DS.Color.accent.opacity(0.8)],
-                startPoint: .leading,
-                endPoint: .trailing
-            )
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-    }
+
     
     // MARK: - Premium Content
     private var premiumContent: some View {
@@ -236,15 +185,21 @@ struct AutomationView: View {
     // MARK: - Automation Categories (Premium)
     private var automationCategories: some View {
         VStack(spacing: 16) {
-            Text("Настройки автоматизации")
-                .font(.title3.weight(.semibold))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) {
                 AutomationCard(
+                    icon: "apps.iphone",
+                    title: L10n.Automation.Feature.apps,
+                    subtitle: L10n.Automation.Feature.appsDesc,
+                    color: .purple,
+                    isEnabled: true
+                ) {
+                    showAppTriggers = true
+                }
+                
+                AutomationCard(
                     icon: "clock.fill",
-                    title: "Расписание",
-                    subtitle: "По времени",
+                    title: L10n.Automation.Feature.schedule,
+                    subtitle: L10n.Automation.Feature.scheduleDesc,
                     color: .orange,
                     isEnabled: true
                 ) {
@@ -252,19 +207,9 @@ struct AutomationView: View {
                 }
                 
                 AutomationCard(
-                    icon: "apps.iphone",
-                    title: "Приложения",
-                    subtitle: "Smart triggers",
-                    color: .purple,
-                    isEnabled: true
-                ) {
-                    // Navigate to app triggers
-                }
-                
-                AutomationCard(
                     icon: "moon.zzz.fill",
-                    title: "Focus режимы",
-                    subtitle: "Интеграция",
+                    title: L10n.Automation.Feature.focus,
+                    subtitle: L10n.Automation.Feature.focusDesc,
                     color: .indigo,
                     isEnabled: true
                 ) {
@@ -273,8 +218,8 @@ struct AutomationView: View {
                 
                 AutomationCard(
                     icon: "location.fill",
-                    title: "Геолокация",
-                    subtitle: "По местам",
+                    title: L10n.Automation.Feature.location,
+                    subtitle: L10n.Automation.Feature.locationDesc,
                     color: .green,
                     isEnabled: true
                 ) {
@@ -324,41 +269,70 @@ struct FeatureRow: View {
 struct AutomationCard: View {
     let icon: String
     let title: String
-    let subtitle: String
+    let subtitle: String?
     let color: Color
     let isEnabled: Bool
     let action: () -> Void
     
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 12) {
+            VStack(spacing: 14) {
+                // Modern icon design
                 Image(systemName: icon)
-                    .font(.title2)
-                    .foregroundColor(color)
-                    .frame(width: 40, height: 40)
-                    .background(color.opacity(0.1))
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .font(.system(size: 24, weight: .semibold))
+                    .foregroundColor(.white)
+                    .frame(width: 48, height: 48)
+                    .background(
+                        LinearGradient(
+                            colors: [color, color.opacity(0.8)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .shadow(color: color.opacity(0.3), radius: 8, x: 0, y: 4)
                 
-                VStack(spacing: 4) {
+                // Title and subtitle with better spacing
+                VStack(spacing: 6) {
                     Text(title)
-                        .font(.subheadline.weight(.medium))
+                        .font(.system(size: 15, weight: .semibold, design: .rounded))
                         .foregroundColor(.primary)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(1)
                     
-                    Text(subtitle)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                    if let subtitle = subtitle {
+                        Text(subtitle)
+                            .font(.system(size: 12, weight: .medium, design: .rounded))
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
                 }
+                .padding(.horizontal, 8)
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 120)
-            .background(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .overlay(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .stroke(color.opacity(0.2), lineWidth: 1)
+            .frame(height: 130)
+            .background(
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .fill(.ultraThinMaterial)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .stroke(Color(.separator).opacity(0.3), lineWidth: 0.5)
+                    )
             )
+            .shadow(color: Color.black.opacity(0.04), radius: 8, x: 0, y: 2)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(CardButtonStyle())
+    }
+}
+
+// MARK: - Card Button Style
+struct CardButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+            .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
     }
 }
 
