@@ -57,6 +57,34 @@ struct L10n {
             static let learn = "premium.learn.button".localized
         }
     }
+
+    // MARK: - Onboarding
+    struct Onboarding {
+        struct Button {
+            static let next = "onboarding.button.continue".localized
+            static let start = "onboarding.button.start".localized
+        }
+
+        struct Page1 {
+            static let title = "onboarding.page1.title".localized
+            static let description = "onboarding.page1.description".localized
+        }
+
+        struct Page2 {
+            static let title = "onboarding.page2.title".localized
+            static let description = "onboarding.page2.description".localized
+        }
+
+        struct Page3 {
+            static let title = "onboarding.page3.title".localized
+            static let description = "onboarding.page3.description".localized
+        }
+
+        struct Page4 {
+            static let title = "onboarding.page4.title".localized
+            static let description = "onboarding.page4.description".localized
+        }
+    }
     
     // MARK: - Setup Screen
     struct Setup {
@@ -181,6 +209,66 @@ struct L10n {
             static let location = "automation.feature.location".localized
             static let locationDesc = "automation.feature.location.desc".localized
         }
+        
+        // MARK: - Automation Alerts
+        struct Alert {
+            static let shortcutsRequired = "automation.alert.shortcuts.required".localized
+            static let shortcutsRequiredMessage = "automation.alert.shortcuts.required.message".localized
+            static let openAppStore = "automation.alert.open.appstore".localized
+        }
+        
+        // MARK: - Automation Instructions
+        struct Instruction {
+            static let step1Title = "automation.instruction.step1.title".localized
+            static let step1Description = "automation.instruction.step1.description".localized
+            static let step2Title = "automation.instruction.step2.title".localized
+            static let step2Description = "automation.instruction.step2.description".localized
+            static let step3Title = { (appName: String) in
+                String(format: "automation.instruction.step3.title".localized, appName)
+            }
+            static let step3Description = { (appName: String) in
+                String(format: "automation.instruction.step3.description".localized, appName)
+            }
+            static let step4Title = "automation.instruction.step4.title".localized
+            static let step4Description = { (shortcutName: String) in
+                String(format: "automation.instruction.step4.description".localized, shortcutName)
+            }
+            static let step5Title = "automation.instruction.step5.title".localized
+            static let step5Description = "automation.instruction.step5.description".localized
+        }
+        
+        // MARK: - Automation Setup
+        struct AutomationSetup {
+            static let title = "automation.setup.title".localized
+            static let subtitle = "automation.setup.subtitle".localized
+            
+            struct Button {
+                static let autoSetup = "automation.setup.button.auto".localized
+                static let done = "automation.setup.button.done".localized
+            }
+            
+            static let commandsFirst = "automation.setup.commands.first".localized
+            static let buttonAddCommands = "automation.setup.button.add.commands".localized
+            static let commandsCompleted = "automation.setup.commands.completed".localized
+            static let settingsPlaceholder = "automation.setup.settings.placeholder".localized
+            static let infoTitle = "automation.setup.info.title".localized
+            static let infoSubtitle = "automation.setup.info.subtitle".localized
+        }
+        
+        // MARK: - Commands Setup
+        struct CommandsSetup {
+            static let title = "commands.setup.title".localized
+            static let subtitle = "commands.setup.subtitle".localized
+            
+            struct Button {
+                static let done = "commands.setup.button.done".localized
+            }
+            
+            struct Banner {
+                static let title = "commands.setup.banner.title".localized
+                static let subtitle = "commands.setup.banner.subtitle".localized
+            }
+        }
     }
     
     // MARK: - App Triggers Screen
@@ -196,15 +284,41 @@ struct L10n {
         struct Button {
             static let save = "app.trigger.button.save".localized
             static let close = "app.trigger.button.close".localized
+            static let enable = "app.trigger.button.enable".localized
+            static let disable = "app.trigger.button.disable".localized
+            static let toneDown = "app.trigger.button.tone.down".localized
+            static let toneRestore = "app.trigger.button.tone.restore".localized
+            static let confirm = "app.trigger.button.confirm".localized
         }
         
         struct Category {
             static let all = "app.trigger.category.all".localized
             static let social = "app.trigger.category.social".localized
             static let entertainment = "app.trigger.category.entertainment".localized
-            static let productivity = "app.trigger.category.productivity".localized
-            static let other = "app.trigger.category.other".localized
+        }
+        
+        struct Hint {
+            static let twoShortcuts = "app.trigger.hint.two.shortcuts".localized
+            static let importHint = "app.trigger.hint.import".localized
+            static let importHintHint = "app.trigger.hint.import.hint".localized
+        }
+        
+        struct Section {
+            static let commands = "app.trigger.section.commands".localized
+            static let apps = "app.trigger.section.apps".localized
+        }
+        
+        static let afterTitle = "app.trigger.after.title".localized
+        
+        struct Actions {
+            static let openShortcuts = "app.trigger.button.open.shortcuts".localized
         }
     }
+    
+
+    
+
+    
+
 }
 

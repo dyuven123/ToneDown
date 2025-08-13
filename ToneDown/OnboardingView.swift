@@ -12,28 +12,28 @@ struct OnboardingView: View {
     @State private var currentPage = 0
     @State private var isPressed = false
     
-    let pages = [
-        OnboardingPage(
-            emoji: "📱",
-            title: "Добро пожаловать в ToneDown",
-            description: "Приложение, которое поможет сделать твоё время в телефоне более осознанным"
-        ),
-        OnboardingPage(
-            emoji: "🎨",
-            title: "Убери яркие цвета",
-            description: "Одно нажатие и Instagram, TikTok, YouTube станут менее \"вкусными\" в чёрно-белом режиме"
-        ),
-        OnboardingPage(
-            emoji: "🧠",
-            title: "Осознанное использование",
-            description: "Серые тона снижают визуальную привлекательность и помогают тратить меньше времени в лентах"
-        ),
-        OnboardingPage(
-            emoji: "⚡",
-            title: "Мгновенное переключение",
-            description: "Быстро включай и выключай режим в зависимости от ситуации"
-        )
-    ]
+	let pages = [
+		OnboardingPage(
+			emoji: "📱",
+			title: L10n.Onboarding.Page1.title,
+			description: L10n.Onboarding.Page1.description
+		),
+		OnboardingPage(
+			emoji: "🎨",
+			title: L10n.Onboarding.Page2.title,
+			description: L10n.Onboarding.Page2.description
+		),
+		OnboardingPage(
+			emoji: "🧠",
+			title: L10n.Onboarding.Page3.title,
+			description: L10n.Onboarding.Page3.description
+		),
+		OnboardingPage(
+			emoji: "⚡",
+			title: L10n.Onboarding.Page4.title,
+			description: L10n.Onboarding.Page4.description
+		)
+	]
     
     var body: some View {
         VStack(spacing: 0) {
@@ -63,14 +63,14 @@ struct OnboardingView: View {
             
             // Navigation buttons
             VStack(spacing: 16) {
-                if currentPage < pages.count - 1 {
+				if currentPage < pages.count - 1 {
                     Button {
                         withAnimation(.spring()) {
                             currentPage += 1
                         }
                         UIImpactFeedbackGenerator(style: .light).impactOccurred()
                     } label: {
-                        Text("Продолжить")
+						Text(L10n.Onboarding.Button.next)
                             .font(DS.Typo.button)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
@@ -85,7 +85,7 @@ struct OnboardingView: View {
                         appState.completeOnboarding()
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     } label: {
-                        Text("Начать пользоваться")
+						Text(L10n.Onboarding.Button.start)
                             .font(DS.Typo.button)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)

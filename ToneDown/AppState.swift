@@ -12,6 +12,7 @@ class AppState: ObservableObject {
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     @AppStorage("hasCompletedSetup") var hasCompletedSetup: Bool = false
     @AppStorage("hasPremium") var hasPremium: Bool = false
+    @AppStorage("hasCompletedAutomationSetup") var hasCompletedAutomationSetup: Bool = false
     
     func completeOnboarding() {
         hasSeenOnboarding = true
@@ -23,5 +24,9 @@ class AppState: ObservableObject {
     
     func purchasePremium() {
         hasPremium = true
+    }
+    
+    func completeAutomationSetup() {
+        hasCompletedAutomationSetup = true
     }
 }

@@ -8,6 +8,18 @@
 "app.tagline" = "Make your phone less addictive with one tap";
 "app.description" = "Switches screen to grayscale through iOS Shortcuts";
 
+// MARK: - Onboarding
+"onboarding.button.continue" = "Continue";
+"onboarding.button.start" = "Start using";
+"onboarding.page1.title" = "Welcome to ToneDown";
+"onboarding.page1.description" = "An app that helps make your phone time more mindful";
+"onboarding.page2.title" = "Remove bright colors";
+"onboarding.page2.description" = "One tap and Instagram, TikTok, YouTube become less ‘tasty’ in grayscale";
+"onboarding.page3.title" = "Mindful usage";
+"onboarding.page3.description" = "Gray tones reduce visual appeal and help spend less time in feeds";
+"onboarding.page4.title" = "Instant switching";
+"onboarding.page4.description" = "Quickly turn the mode on and off depending on the situation";
+
 // MARK: - Home Screen
 "home.title" = "ToneDown";
 "home.subtitle" = "Make your phone less addictive with one tap";
@@ -91,28 +103,69 @@
 // MARK: - Automation Features
 "automation.feature.schedule" = "Schedule Mode";
 "automation.feature.schedule.desc" = "Automatic on/off by time";
-"automation.feature.apps" = "App Triggers";
-"automation.feature.apps.desc" = "Smart activation per app";
+"automation.feature.apps" = "Open/Close";
+"automation.feature.apps.desc" = "Enable on app open, disable on close";
 "automation.feature.focus" = "Focus Modes";
 "automation.feature.focus.desc" = "Integration with system Focus";
 "automation.feature.location" = "Location-based";
 "automation.feature.location.desc" = "Activate by places";
 
 // MARK: - App Triggers Screen
-"app.trigger.title" = "App Triggers";
-"app.trigger.subtitle" = "Smart automation for apps";
-"app.trigger.description" = "Automatically enable grayscale when opening selected apps";
+"app.trigger.title" = "Open/Close";
+"app.trigger.subtitle" = "Automation for open/close";
+"app.trigger.description" = "Automatically enable grayscale on app open and disable on close";
 "app.trigger.active.count" = "active";
 "app.trigger.active.info" = "%d apps will trigger grayscale mode";
 "app.trigger.button.save" = "Save Settings";
 "app.trigger.button.close" = "Close";
+"app.trigger.button.enable" = "Enable";
+"app.trigger.button.disable" = "Disable";
+"app.trigger.button.tone.down" = "Tone down";
+"app.trigger.button.tone.restore" = "Restore color";
+"app.trigger.hint.two.shortcuts" = "For reliable automation, add two commands: Enable on open and Disable on close.";
+"app.trigger.hint.import" = "Tap the buttons below to import ready-made commands for each app.";
+"app.trigger.hint.import.hint" = "After adding the commands, tap the confirmation button below.";
+"app.trigger.button.confirm" = "✅ I added 2 commands";
+"app.trigger.after.title" = "After adding the commands:";
+"commands.setup.title" = "Add Commands";
+"commands.setup.subtitle" = "Import ready-made commands for automation";
+"commands.setup.button.done" = "Done";
+"commands.setup.banner.title" = "💡 Tip";
+"commands.setup.banner.subtitle" = "Add both commands for complete automation";
+"automation.setup.commands.first" = "First, add the commands:";
+"automation.setup.button.add.commands" = "Add Commands";
+"automation.setup.commands.completed" = "Commands added! Now set up automation:";
+"automation.setup.settings.placeholder" = "Automation settings will be here";
+"automation.setup.info.title" = "Automation Setup";
+"automation.setup.info.subtitle" = "Here you can configure automatic triggers for applications";
 
 // MARK: - App Categories
 "app.trigger.category.all" = "All";
 "app.trigger.category.social" = "Social";
 "app.trigger.category.entertainment" = "Entertainment";
-"app.trigger.category.productivity" = "Productivity";
-"app.trigger.category.other" = "Other";
+
+// MARK: - Automation Setup
+"automation.setup.title" = "Setup Automation";
+"automation.setup.subtitle" = "App trigger automation";
+"automation.setup.button.auto" = "Auto Setup";
+"automation.setup.button.done" = "Done";
+
+// MARK: - Automation Instructions
+"automation.instruction.step1.title" = "Open Shortcuts App";
+"automation.instruction.step1.description" = "We'll help you create automation that triggers grayscale when opening this app";
+"automation.instruction.step2.title" = "Create New Automation";
+"automation.instruction.step2.description" = "Tap the '+' button and select 'Create Personal Automation'";
+"automation.instruction.step3.title" = "Select App Trigger";
+"automation.instruction.step3.description" = "Choose 'App' trigger and select %@ from the list";
+"automation.instruction.step4.title" = "Add Toggle Action";
+"automation.instruction.step4.description" = "Add 'Run Shortcut' action and select '%@' shortcut";
+"automation.instruction.step5.title" = "Enable Automation";
+"automation.instruction.step5.description" = "Turn off 'Ask Before Running' and save your automation";
+
+// MARK: - Automation Alerts
+"automation.alert.shortcuts.required" = "Shortcuts App Required";
+"automation.alert.shortcuts.required.message" = "Please install Shortcuts app to create automations";
+"automation.alert.open.appstore" = "Open App Store";
 
 // MARK: - Premium Features (for README)
 "premium.feature.schedule" = "🕘 Automatic schedule mode - turns on at 21:00, off at 8:00";

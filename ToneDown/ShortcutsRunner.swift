@@ -34,6 +34,68 @@ enum ShortcutsRunner {
         }
     }
     
+    // MARK: - Base Commands Import (Enable/Disable Grayscale)
+    private static let baseEnableLink = "https://www.icloud.com/shortcuts/1c127f9a94a144e1b8402de949c70d9b"
+    private static let baseDisableLink = "https://www.icloud.com/shortcuts/fad6a725d00a4ecfb771a26798e051bf"
+    
+    static func importBaseEnableCommand() {
+        openShortcutImport(from: baseEnableLink)
+    }
+    
+    static func importBaseDisableCommand() {
+        openShortcutImport(from: baseDisableLink)
+    }
+    
+    // MARK: - Open specific iCloud Shortcut links per known app
+    enum AppShortcut: String, CaseIterable {
+        case instagram
+        case tiktok
+        case youtube
+        
+        var displayName: String {
+            switch self {
+            case .instagram: return "Instagram"
+            case .tiktok: return "TikTok"
+            case .youtube: return "YouTube"
+            }
+        }
+    }
+    
+    enum ShortcutAction {
+        case enableGrayscale
+        case disableGrayscale
+    }
+    
+    // Placeholder mapping: separate links for Enable/Disable
+    private static let appEnableLinks: [AppShortcut: String] = [
+        .instagram: "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456",
+        .tiktok:    "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456",
+        .youtube:   "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456"
+    ]
+    
+    private static let appDisableLinks: [AppShortcut: String] = [
+        .instagram: "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456",
+        .tiktok:    "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456",
+        .youtube:   "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456"
+    ]
+    
+    static func openAppSpecificShortcut(_ app: AppShortcut, action: ShortcutAction) {
+        let link: String?
+        switch action {
+        case .enableGrayscale:
+            link = appEnableLinks[app]
+        case .disableGrayscale:
+            link = appDisableLinks[app]
+        }
+        guard let link, !link.isEmpty else { return }
+        openShortcutImport(from: link)
+    }
+    
+    static func openShortcutImport(from urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
     // URL для автоматического создания команды Toggle Grayscale
     static func createToggleGrayscaleShortcut() {
         // Реальная ссылка на готовую команду Toggle Grayscale
