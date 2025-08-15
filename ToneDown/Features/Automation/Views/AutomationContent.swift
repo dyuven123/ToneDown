@@ -139,7 +139,35 @@ struct BaseCommandsSetupContent: View {
             .padding(.horizontal, 16)
             
             // Confirmation button
-            VStack(spacing: 12) {
+            VStack(spacing: 16) {
+                // Инструкция для пользователя
+                VStack(spacing: 8) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "arrow.left.arrow.right")
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
+                        Text("Важно!")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundColor(.blue)
+                    }
+                    
+                    Text("После импорта команды вернитесь в приложение и нажмите кнопку ниже")
+                        .font(.caption)
+                        .foregroundColor(.blue)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.vertical, 12)
+                .padding(.horizontal, 16)
+                .background(
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(.blue.opacity(0.1))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .stroke(.blue.opacity(0.3), lineWidth: 1)
+                        )
+                )
+                .padding(.horizontal, 16)
+                
                 Text("После добавления команд подтвердите создание")
                     .font(.subheadline.weight(.medium))
                     .foregroundColor(.secondary)
