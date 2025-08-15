@@ -1,0 +1,83 @@
+# SwiftLint конфигурация для проекта ToneDown
+# Проверяем соблюдение MVVM архитектуры
+
+# MARK: - Основные правила
+disabled_rules:
+  - trailing_whitespace
+  - line_length
+
+# MARK: - Архитектурные правила
+opt_in_rules:
+  - file_header
+  - mark
+  - orphaned_doc_comment
+  - redundant_type_annotation
+  - sorted_imports
+
+# MARK: - Структура файлов
+file_header:
+  required_pattern: |
+    //
+    //  \w+\.swift
+    //  ToneDown
+    //
+    //  Created by .+ on \d{2}\.\d{2}\.\d{4}\.
+    //
+
+# MARK: - Обязательные MARK комментарии
+mark:
+  required_pattern: |
+    // MARK: - \w+
+
+# MARK: - Проверка импортов
+sorted_imports:
+  severity: warning
+
+# MARK: - Длина строк
+line_length:
+  warning: 120
+  error: 150
+
+# MARK: - Именование
+type_name:
+  min_length: 3
+  max_length: 40
+
+identifier_name:
+  min_length: 2
+  max_length: 40
+
+# MARK: - Структура кода
+function_body_length:
+  warning: 50
+  error: 100
+
+type_body_length:
+  warning: 300
+  error: 500
+
+# MARK: - Комментарии
+comment_spacing:
+  severity: warning
+
+# MARK: - Пустые строки
+empty_count:
+  severity: warning
+
+# MARK: - Форматирование
+trailing_comma:
+  severity: warning
+
+# MARK: - Безопасность
+force_unwrapping:
+  severity: error
+
+implicitly_unwrapped_optional:
+  severity: error
+
+# MARK: - Производительность
+unused_import:
+  severity: warning
+
+unused_private_declaration:
+  severity: warning

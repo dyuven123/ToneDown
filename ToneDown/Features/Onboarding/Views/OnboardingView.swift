@@ -147,11 +147,7 @@ struct OnboardingPageView: View {
 }
 
 // MARK: - OnboardingPage Model
-struct OnboardingPage {
-    let emoji: String
-    let title: String
-    let description: String
-}
+// OnboardingPage определена в OnboardingViewModel.swift
 
 // MARK: - Preview
 #Preview {
