@@ -38,4 +38,12 @@ class AppState: ObservableObject {
     func resetBaseCommands() {
         hasCreatedBaseCommands = false
     }
+    
+    // MARK: - Automation State Sync
+    func syncAutomationState(hasCommands: Bool, hasAutomation: Bool) {
+        hasCreatedBaseCommands = hasCommands
+        hasCompletedAutomationSetup = hasAutomation
+    }
+    
+    // Упрощенная версия без сложной обработки жизненного цикла
 }

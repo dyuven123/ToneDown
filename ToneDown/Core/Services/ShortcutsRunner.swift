@@ -151,4 +151,5 @@ enum ShortcutsRunner {
         
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
+    
 }

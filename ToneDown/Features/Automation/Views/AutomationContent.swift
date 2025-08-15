@@ -146,7 +146,9 @@ struct BaseCommandsSetupContent: View {
                     .multilineTextAlignment(.center)
                 
                 Button {
-                    viewModel.confirmCommandsCreation()
+                    Task {
+                        await viewModel.confirmCommandsCreation()
+                    }
                 } label: {
                     HStack(spacing: 10) {
                         Image(systemName: "checkmark.circle.fill")
@@ -186,30 +188,6 @@ struct AutomationContent: View {
     
     var body: some View {
         VStack(spacing: 24) {
-            // Success message
-            VStack(spacing: 16) {
-                HStack(spacing: 12) {
-                    Image(systemName: "checkmark.circle.fill")
-                        .font(.title2)
-                        .foregroundColor(.green)
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Базовые команды созданы!")
-                            .font(.headline.weight(.semibold))
-                            .foregroundColor(.green)
-                        Text("Теперь вы можете настроить автоматизацию")
-                            .font(.caption)
-                            .foregroundColor(.green.opacity(0.8))
-                    }
-                }
-                .padding(.vertical, 12)
-                .padding(.horizontal, 16)
-                .background(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(.green.opacity(0.1))
-                )
-            }
-            .padding(.horizontal, 20)
-            
             // Automation grid
             LazyVGrid(columns: [
                 GridItem(.flexible(), spacing: 16),

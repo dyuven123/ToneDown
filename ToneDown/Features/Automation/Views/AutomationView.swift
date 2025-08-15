@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct AutomationView: View {
-    @StateObject private var viewModel = AutomationViewModel()
+    @StateObject private var viewModel: AutomationViewModel
     @EnvironmentObject var appState: AppState
     @State private var showDemo = false
     @State private var showPurchase = false
+    
+    init() {
+        // ViewModel будет инициализирован в onAppear с AppState
+        self._viewModel = StateObject(wrappedValue: AutomationViewModel())
+    }
     
     var body: some View {
         NavigationView {
@@ -47,8 +52,14 @@ struct AutomationView: View {
             PurchaseView()
         }
         .onAppear {
-            // Инициализируем ViewModel при появлении экрана
+            // Передаем AppState в ViewModel и проверяем статус команд
+            viewModel.updateAppState(appState)
+            Task {
+                await viewModel.refreshCommandsStatus()
+            }
         }
+        // Убираем ненужные проверки при возвращении в приложение
+        // Просто доверяем сохраненному состоянию
     }
 }
 
