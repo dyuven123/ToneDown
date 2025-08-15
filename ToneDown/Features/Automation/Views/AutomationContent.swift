@@ -17,90 +17,86 @@ struct BaseCommandsSetupContent: View {
     }
     
     var body: some View {
-        VStack(spacing: 32) {
+        VStack(spacing: 20) {
             // Header
-            VStack(spacing: 16) {
+            VStack(spacing: 12) {
                 Text("⚙️")
-                    .font(.system(size: 56))
+                    .font(.system(size: 40))
                 Text("Создание базовых команд")
-                    .font(.title.weight(.bold))
+                    .font(.title2.weight(.bold))
                 Text("Сначала создайте команды для включения и выключения серого режима")
                     .font(.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 16)
             }
             
             // Info block
-            VStack(alignment: .leading, spacing: 16) {
-                HStack(spacing: 12) {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 10) {
                     Image(systemName: "info.circle.fill")
-                        .font(.title2)
+                        .font(.title3)
                         .foregroundColor(DS.Color.accent)
                     
                     Text("Два шортката")
-                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .font(.system(size: 15, weight: .semibold, design: .rounded))
                         .foregroundColor(.primary)
                 }
                 
                 Text("Импортируйте готовые команды для управления серым режимом")
-                    .font(.system(size: 14, weight: .medium, design: .rounded))
+                    .font(.system(size: 13, weight: .medium, design: .rounded))
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            .padding(.vertical, 20)
-            .padding(.horizontal, 20)
+            .padding(.vertical, 16)
+            .padding(.horizontal, 16)
             .frame(maxWidth: .infinity)
             .background(
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .fill(DS.Color.accent.opacity(0.05))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        RoundedRectangle(cornerRadius: 14, style: .continuous)
                             .stroke(DS.Color.accent.opacity(0.2), lineWidth: 1)
                     )
             )
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 16)
             
             // Import buttons
-            VStack(spacing: 16) {
+            VStack(spacing: 12) {
                 Button(action: {
                     Task {
                         await viewModel.importEnableCommand()
                     }
                 }) {
-                    HStack(spacing: 16) {
-                        Image(systemName: "plus.circle.fill")
-                            .font(.title2)
-                            .foregroundColor(DS.Color.accent)
-                            .frame(width: 32, height: 32)
-                        
-                        VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: 14) {
+                        VStack(alignment: .leading, spacing: 3) {
                             Text("Включить серый режим")
-                                .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                .foregroundColor(.primary)
+                                .font(.system(size: 15, weight: .semibold, design: .rounded))
+                                .foregroundColor(.white)
                             
                             Text("Команда для активации")
-                                .font(.system(size: 14, weight: .medium, design: .rounded))
-                                .foregroundColor(.secondary)
+                                .font(.system(size: 13, weight: .medium, design: .rounded))
+                                .foregroundColor(.white.opacity(0.8))
                         }
                         
                         Spacer()
                         
                         Image(systemName: "arrow.up.right.square.fill")
-                            .font(.title3)
-                            .foregroundColor(DS.Color.accent)
+                            .font(.subheadline)
+                            .foregroundColor(.white)
                     }
-                    .padding(.vertical, 20)
-                    .padding(.horizontal, 20)
+                    .padding(.vertical, 16)
+                    .padding(.horizontal, 16)
                     .background(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(.ultraThinMaterial)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .stroke(DS.Color.accent.opacity(0.2), lineWidth: 1)
-                            )
+                        LinearGradient(
+                            colors: [DS.Color.accent, DS.Color.accent.opacity(0.8)],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
                     )
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .shadow(color: DS.Color.accent.opacity(0.3), radius: 8, x: 0, y: 4)
                 }
                 .buttonStyle(.plain)
                 
@@ -109,45 +105,41 @@ struct BaseCommandsSetupContent: View {
                         await viewModel.importDisableCommand()
                     }
                 }) {
-                    HStack(spacing: 16) {
-                        Image(systemName: "minus.circle.fill")
-                            .font(.title2)
-                            .foregroundColor(.secondary)
-                            .frame(width: 32, height: 32)
-                        
-                        VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: 14) {
+                        VStack(alignment: .leading, spacing: 3) {
                             Text("Восстановить цвета")
-                                .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                .foregroundColor(.primary)
+                                .font(.system(size: 15, weight: .semibold, design: .rounded))
+                                .foregroundColor(.white)
                             
                             Text("Команда для деактивации")
-                                .font(.system(size: 14, weight: .medium, design: .rounded))
-                                .foregroundColor(.secondary)
+                                .font(.system(size: 13, weight: .medium, design: .rounded))
+                                .foregroundColor(.white.opacity(0.8))
                         }
                         
                         Spacer()
                         
                         Image(systemName: "arrow.up.right.square.fill")
-                            .font(.title3)
-                            .foregroundColor(.secondary)
+                            .font(.subheadline)
+                            .foregroundColor(.white)
                     }
-                    .padding(.vertical, 20)
-                    .padding(.horizontal, 20)
+                    .padding(.vertical, 16)
+                    .padding(.horizontal, 16)
                     .background(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(.ultraThinMaterial)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .stroke(.secondary.opacity(0.2), lineWidth: 1)
-                            )
+                        LinearGradient(
+                            colors: [DS.Color.accent, DS.Color.accent.opacity(0.8)],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
                     )
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .shadow(color: DS.Color.accent.opacity(0.3), radius: 8, x: 0, y: 4)
                 }
                 .buttonStyle(.plain)
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 16)
             
             // Confirmation button
-            VStack(spacing: 16) {
+            VStack(spacing: 12) {
                 Text("После добавления команд подтвердите создание")
                     .font(.subheadline.weight(.medium))
                     .foregroundColor(.secondary)
@@ -156,15 +148,15 @@ struct BaseCommandsSetupContent: View {
                 Button {
                     viewModel.confirmCommandsCreation()
                 } label: {
-                    HStack(spacing: 12) {
+                    HStack(spacing: 10) {
                         Image(systemName: "checkmark.circle.fill")
-                            .font(.title3)
+                            .font(.subheadline)
                         Text("Команды созданы")
                             .font(.headline.weight(.semibold))
                     }
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 56)
+                    .frame(height: 52)
                     .background(
                         LinearGradient(
                             colors: [.green, .green.opacity(0.8)],
@@ -172,14 +164,14 @@ struct BaseCommandsSetupContent: View {
                             endPoint: .trailing
                         )
                     )
-                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    .shadow(color: .green.opacity(0.3), radius: 12, x: 0, y: 6)
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .shadow(color: .green.opacity(0.3), radius: 8, x: 0, y: 4)
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 16)
             }
-            .padding(.top, 16)
+            .padding(.top, 8)
         }
-        .padding(.top, 20)
+        .padding(.top, 12)
     }
 }
 

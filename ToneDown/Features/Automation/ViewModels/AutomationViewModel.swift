@@ -38,7 +38,13 @@ class AutomationViewModel: ObservableObject {
     
     // MARK: - Initialization
     init() {
-        loadAutomationStatus()
+        // Всегда начинаем с начального состояния
+        automationStatus.hasCreatedBaseCommands = false
+        automationStatus.hasCompletedAutomationSetup = false
+        automationStatus.lastSetupDate = nil
+        automationStatus.commandsCount = 0
+        automationState = .idle
+        saveAutomationStatus()
     }
     
     // MARK: - Public Methods

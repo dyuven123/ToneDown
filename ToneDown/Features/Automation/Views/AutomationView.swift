@@ -21,8 +21,8 @@ struct AutomationView: View {
                     Text("Автоматизация")
                         .font(.largeTitle.weight(.bold))
                         .frame(maxWidth: .infinity)
-                        .padding(.top, 20)
-                        .padding(.bottom, 16)
+                        .padding(.top, 16)
+                        .padding(.bottom, 12)
                     
                     if appState.hasPremium {
                         if viewModel.hasCreatedBaseCommands {
