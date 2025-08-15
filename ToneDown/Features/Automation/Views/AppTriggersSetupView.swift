@@ -11,32 +11,111 @@ import SwiftUI
 struct AppTriggersSetupView: View {
     @EnvironmentObject var appState: AppState
     @State private var currentStep = 0
-    @State private var showDetailedInstructions = false
     
     private let setupSteps = [
         SetupStep(
             number: 1,
-            title: "Команды готовы",
-            description: "Базовые команды для включения и выключения серого режима уже созданы",
-            action: "Посмотреть инструкции",
-            icon: "checkmark.circle.fill",
+            title: "Создайте первую автоматизацию (включение)",
+            description: "Нажмите на значок '+' или 'Новая автоматизация' и выберите 'Приложение'",
+            action: "Создать автоматизацию",
+            icon: "plus.circle.fill",
             color: .green
         ),
         SetupStep(
             number: 2,
-            title: "Открыть автоматизации",
-            description: "Перейдите прямо к экрану создания автоматизаций в Командах",
-            action: "Открыть автоматизации",
-            icon: "arrow.up.right.square.fill",
-            color: .blue
+            title: "Выберите приложения и настройте триггер",
+            description: "Выберите ВСЕ приложения, для которых должна работать автоматизация (Instagram, TikTok, YouTube и т.д.), затем в разделе 'Приложение' выберите 'Открыто' и включите 'Немедленный запуск' для мгновенного срабатывания.",
+            action: "Настроить приложения и триггер",
+            icon: "app.badge.checkmark",
+            color: .purple
         ),
+        // Убираем дублирующийся шаг 3
         SetupStep(
             number: 3,
-            title: "Создать автоматизацию",
-            description: "Следуйте инструкциям для настройки автоматического включения при открытии приложений",
-            action: "Показать инструкции",
-            icon: "list.bullet.clipboard.fill",
+            title: "Выберите команду 'Grayscale On'",
+            description: "Выберите команду 'Grayscale On' (включение серого режима) из списка ваших команд. Если команда не найдена, вернитесь к экрану создания команд.",
+            action: "Выбрать команду",
+            icon: "checkmark.circle.fill",
             color: .green
+        ),
+        // Шаг 4: Создание второй автоматизации
+        SetupStep(
+            number: 4,
+            title: "Создайте вторую автоматизацию (выключение)",
+            description: "Нажмите на значок '+' и выберите 'Приложение'",
+            action: "Создать автоматизацию",
+            icon: "plus.circle.fill",
+            color: .green
+        ),
+        // Шаг 5: Настройка триггера для выключения
+        SetupStep(
+            number: 5,
+            title: "Настройте триггер 'Закрыто'",
+            description: "Выберите те же приложения, что и в шаге 2, но в разделе 'Приложение' выберите 'Закрыто' и включите 'Немедленный запуск'",
+            action: "Настроить триггер",
+            icon: "xmark.circle.fill",
+            color: .red
+        ),
+        // Шаг 6: Выбор команды для выключения
+        SetupStep(
+            number: 6,
+            title: "Выберите команду 'Grayscale Off'",
+            description: "Выберите команду 'Grayscale Off' (выключение серого режима) из списка ваших команд. Это автоматически выключит серый режим при закрытии приложений.",
+            action: "Выбрать команду",
+            icon: "checkmark.circle.fill",
+            color: .orange
+        ),
+        // Шаг 7: Тестирование автоматизации
+        SetupStep(
+            number: 7,
+            title: "Протестируйте автоматизацию",
+            description: "Откройте любое выбранное приложение - экран должен стать серым. Закройте приложение - экран должен вернуться к нормальным цветам. Если что-то не работает, вернитесь к соответствующим шагам настройки.",
+            action: "Протестировать",
+            icon: "play.circle.fill",
+            color: .blue
+        )
+    ]
+    
+    private let automationInstructions = [
+        AutomationInstruction(
+            stepNumber: 1,
+            title: "Откройте приложение Команды",
+            description: "Найдите и запустите приложение Команды на вашем iPhone"
+        ),
+        AutomationInstruction(
+            stepNumber: 2,
+            title: "Создайте первую автоматизацию (включение)",
+            description: "Нажмите на значок '+' и выберите 'Создать персональную автоматизацию'"
+        ),
+        AutomationInstruction(
+            stepNumber: 3,
+            title: "Выберите триггер 'Приложение'",
+            description: "Прокрутите вниз и выберите 'Приложение' в разделе 'Приложение'"
+        ),
+        AutomationInstruction(
+            stepNumber: 4,
+            title: "Выберите приложения и настройте 'Открывается'",
+            description: "Выберите ВСЕ приложения, для которых должна работать автоматизация (Instagram, TikTok, YouTube и т.д.) и убедитесь, что выбрано 'Открывается'"
+        ),
+        AutomationInstruction(
+            stepNumber: 5,
+            title: "Добавьте действие 'Выполнить команду'",
+            description: "Нажмите 'Добавить действие' и найдите 'Выполнить команду'"
+        ),
+        AutomationInstruction(
+            stepNumber: 6,
+            title: "Выберите команду 'Grayscale On'",
+            description: "Выберите команду 'Grayscale On' (включение серого режима) из списка"
+        ),
+        AutomationInstruction(
+            stepNumber: 7,
+            title: "Отключите подтверждение и сохраните",
+            description: "Отключите 'Спрашивать перед запуском' и нажмите 'Готово'"
+        ),
+        AutomationInstruction(
+            stepNumber: 8,
+            title: "Создайте вторую автоматизацию (выключение)",
+            description: "Повторите шаги 2-7, но выберите 'Grayscale Off' и настройте триггер 'Закрывается'"
         )
     ]
     
@@ -45,7 +124,13 @@ struct AppTriggersSetupView: View {
             VStack(spacing: 32) {
                 // Header
                 VStack(spacing: 16) {
-                    Text("Настройте автоматическое включение серого режима при открытии приложений")
+                    Text("Пошаговая настройка автоматизации")
+                        .font(.title2.weight(.bold))
+                        .foregroundColor(.primary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 20)
+                    
+                    Text("Следуйте инструкциям для создания автоматического включения серого режима")
                         .font(.body)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -53,15 +138,30 @@ struct AppTriggersSetupView: View {
                 }
                 .padding(.top, 20)
                 
-                // Progress indicator
+                // Progress indicator with checkboxes
                 VStack(spacing: 16) {
                     HStack(spacing: 12) {
                         ForEach(0..<setupSteps.count, id: \.self) { index in
-                            Circle()
-                                .fill(index <= currentStep ? DS.Color.accent : Color(.separator))
-                                .frame(width: 12, height: 12)
+                            Button {
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    currentStep = index
+                                }
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                        .fill(index <= currentStep ? DS.Color.accent : Color(.separator))
+                                        .frame(width: 16, height: 16)
+                                    
+                                    if index < currentStep {
+                                        Image(systemName: "checkmark")
+                                            .font(.caption2.weight(.bold))
+                                            .foregroundColor(.white)
+                                    }
+                                }
                                 .scaleEffect(index == currentStep ? 1.2 : 1.0)
                                 .animation(.easeInOut(duration: 0.3), value: currentStep)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                     
@@ -71,8 +171,9 @@ struct AppTriggersSetupView: View {
                 }
                 .padding(.horizontal, 20)
                 
-                // Current step card
+                // Current step card with detailed instructions
                 VStack(spacing: 20) {
+                    // Убираем ограничения по высоте, чтобы контент мог расширяться
                     let step = setupSteps[currentStep]
                     
                     // Step header
@@ -95,34 +196,38 @@ struct AppTriggersSetupView: View {
                             Text(step.description)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
-                                .lineLimit(3)
+                                .fixedSize(horizontal: false, vertical: true)
                         }
                         
                         Spacer()
                     }
                     
-                    // Action button
-                    Button {
-                        handleStepAction(step: step)
-                    } label: {
-                        HStack(spacing: 12) {
-                            Image(systemName: step.icon)
-                                .font(.title3)
-                            Text(step.action)
-                                .font(.headline.weight(.semibold))
-                        }
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .background(
-                            LinearGradient(
-                                colors: [step.color, step.color.opacity(0.8)],
-                                startPoint: .leading,
-                                endPoint: .trailing
+                    // Пошаговые инструкции теперь являются основными шагами
+                    
+                    // Action button - показываем для шагов 1 и 4
+                    if step.number == 1 || step.number == 4 {
+                        Button {
+                            handleStepAction(step: step)
+                        } label: {
+                            HStack(spacing: 12) {
+                                Image(systemName: step.icon)
+                                    .font(.title3)
+                                Text(step.action)
+                                    .font(.headline.weight(.semibold))
+                            }
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 56)
+                            .background(
+                                LinearGradient(
+                                    colors: [step.color, step.color.opacity(0.8)],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
                             )
-                        )
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                        .shadow(color: step.color.opacity(0.3), radius: 12, x: 0, y: 6)
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                            .shadow(color: step.color.opacity(0.3), radius: 12, x: 0, y: 6)
+                        }
                     }
                 }
                 .padding(.vertical, 24)
@@ -136,6 +241,7 @@ struct AppTriggersSetupView: View {
                         )
                 )
                 .padding(.horizontal, 20)
+                .frame(maxWidth: .infinity)
                 
                 // Navigation buttons
                 HStack(spacing: 16) {
@@ -189,39 +295,9 @@ struct AppTriggersSetupView: View {
                 }
                 .padding(.horizontal, 20)
                 
-                // Quick help
-                if currentStep == 2 {
-                    VStack(spacing: 16) {
-                        Text("💡 Нужна помощь?")
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundColor(.primary)
-                        
-                        Button {
-                            showDetailedInstructions = true
-                        } label: {
-                            HStack(spacing: 8) {
-                                Image(systemName: "questionmark.circle.fill")
-                                    .font(.title3)
-                                Text("Показать подробные инструкции")
-                                    .font(.subheadline.weight(.medium))
-                            }
-                            .foregroundColor(DS.Color.accent)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal, 16)
-                            .background(
-                                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                    .fill(DS.Color.accent.opacity(0.1))
-                            )
-                        }
-                    }
-                    .padding(.vertical, 16)
-                    .padding(.horizontal, 20)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(.ultraThinMaterial)
-                    )
-                    .padding(.horizontal, 20)
-                }
+                // Пошаговые инструкции уже добавлены выше
+                
+
                 
                 Spacer(minLength: 40)
             }
@@ -229,20 +305,14 @@ struct AppTriggersSetupView: View {
         .navigationTitle("Настройка автоматизации")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color(.systemGroupedBackground))
-        .sheet(isPresented: $showDetailedInstructions) {
-            DetailedInstructionsView()
-        }
+
     }
     
     private func handleStepAction(step: SetupStep) {
         switch step.number {
-        case 1:
-            // Показываем инструкции по созданию команд
-            showDetailedInstructions = true
-        case 2:
+        case 1, 4:
+            // Открываем экран создания автоматизаций для шагов 1 и 4
             openAutomationsScreen()
-        case 3:
-            showDetailedInstructions = true
         default:
             break
         }
@@ -257,6 +327,8 @@ struct AppTriggersSetupView: View {
             ShortcutsRunner.openShortcutsApp()
         }
     }
+    
+
 }
 
 // MARK: - Setup Step Model
@@ -267,6 +339,13 @@ struct SetupStep {
     let action: String
     let icon: String
     let color: Color
+}
+
+// MARK: - Automation Instruction Model
+struct AutomationInstruction {
+    let stepNumber: Int
+    let title: String
+    let description: String
 }
 
 #Preview {
