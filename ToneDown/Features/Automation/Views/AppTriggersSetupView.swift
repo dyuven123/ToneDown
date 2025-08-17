@@ -23,7 +23,6 @@ struct AppTriggersSetupView: View {
             action: "app.triggers.setup.step1.action",
             icon: "plus.circle.fill",
             color: .green,
-            screenshot: "step1_create_automation",
             video: "step1_create_automation"
         ),
         SetupStep(
@@ -33,7 +32,6 @@ struct AppTriggersSetupView: View {
             action: "app.triggers.setup.step2.action",
             icon: "app.badge.checkmark",
             color: .purple,
-            screenshot: "step2_select_apps",
             video: "step2_select_apps"
         ),
         // Убираем дублирующийся шаг 3
@@ -44,7 +42,6 @@ struct AppTriggersSetupView: View {
             action: "app.triggers.setup.step3.action",
             icon: "checkmark.circle.fill",
             color: .green,
-            screenshot: "step3_select_grayscale_on",
             video: "step3_select_grayscale_on"
         ),
         // Шаг 4: Создание второй автоматизации
@@ -55,7 +52,6 @@ struct AppTriggersSetupView: View {
             action: "app.triggers.setup.step4.action",
             icon: "plus.circle.fill",
             color: .green,
-            screenshot: "step4_create_second_automation",
             video: "step4_create_second_automation"
         ),
         // Шаг 5: Настройка триггера для выключения
@@ -66,7 +62,6 @@ struct AppTriggersSetupView: View {
             action: "app.triggers.setup.step5.action",
             icon: "xmark.circle.fill",
             color: .red,
-            screenshot: "step5_configure_closed_trigger",
             video: "step5_configure_closed_trigger"
         ),
         // Шаг 6: Выбор команды для выключения
@@ -77,7 +72,6 @@ struct AppTriggersSetupView: View {
             action: "app.triggers.setup.step6.action",
             icon: "checkmark.circle.fill",
             color: .orange,
-            screenshot: "step6_select_grayscale_off",
             video: "step6_select_grayscale_off"
         ),
         // Шаг 7: Тестирование автоматизации
@@ -88,7 +82,6 @@ struct AppTriggersSetupView: View {
             action: "app.triggers.setup.step7.action",
             icon: "play.circle.fill",
             color: .blue,
-            screenshot: "step7_test_automation",
             video: "step7_test_automation"
         )
     ]
@@ -362,74 +355,8 @@ struct AppTriggersSetupView: View {
                         }
                     }
                     
-                    if let screenshotName = step.screenshot {
-                        VStack(spacing: 0) {
-                            // Красивая рамка для скриншота
-                            ZStack {
-                                // Фоновая рамка с градиентом
-                                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                    .fill(
-                                        LinearGradient(
-                                            colors: [
-                                                DS.Color.accent.opacity(0.1),
-                                                DS.Color.accent.opacity(0.05),
-                                                DS.Color.accent.opacity(0.02)
-                                            ],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
-                                    )
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                            .stroke(
-                                                LinearGradient(
-                                                    colors: [
-                                                            DS.Color.accent.opacity(0.3),
-                                                            DS.Color.accent.opacity(0.1)
-                                                        ],
-                                                        startPoint: .topLeading,
-                                                        endPoint: .bottomTrailing
-                                                    ),
-                                                    lineWidth: 2
-                                                )
-                                            )
-                                
-                                // Скриншот с закругленными углами
-                                Image(screenshotName)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxHeight: 300)
-                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                                    .padding(8)
-                            }
-                            .shadow(
-                                color: DS.Color.accent.opacity(0.2),
-                                radius: 20,
-                                x: 0,
-                                y: 8
-                            )
-                            .shadow(
-                                color: .black.opacity(0.1),
-                                radius: 8,
-                                x: 0,
-                                y: 4
-                            )
-                            
-                            // Индикатор скриншота
-                            HStack(spacing: 8) {
-                                Image(systemName: "photo.fill")
-                                    .font(.caption)
-                                    .foregroundColor(DS.Color.accent)
-                                Text(LocalizedStringKey("app.triggers.setup.screenshot.indicator"))
-                                    .font(.caption2.weight(.medium))
-                                    .foregroundColor(.secondary)
-                            }
-                            .padding(.top, 8)
-                        }
-                    }
-                    
-                    // Если нет ни видео, ни скриншота, показываем красивую заглушку
-                    if step.video == nil && step.screenshot == nil {
+                    // Если нет видео, показываем красивую заглушку
+                    if step.video == nil {
                         VStack(spacing: 0) {
                             // Красивая рамка для заглушки
                             ZStack {
@@ -715,7 +642,6 @@ struct SetupStep {
     let action: String
     let icon: String
     let color: Color
-    let screenshot: String? // Имя изображения из Assets
     let video: String? // Имя видео файла из Assets
 }
 

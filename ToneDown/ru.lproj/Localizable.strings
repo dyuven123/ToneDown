@@ -205,7 +205,6 @@
 "app.triggers.setup.step7.action" = "Протестировать";
 "app.triggers.setup.placeholder.title" = "Скриншот или видео для этого шага";
 "app.triggers.setup.video.playing" = "Видео воспроизводится";
-"app.triggers.setup.screenshot.indicator" = "Скриншот";
 "app.triggers.setup.button.back" = "Назад";
 "app.triggers.setup.button.next" = "Далее";
 "app.triggers.setup.instruction.step1.title" = "Откройте приложение Команды";
