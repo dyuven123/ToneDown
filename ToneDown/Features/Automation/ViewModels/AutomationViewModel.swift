@@ -72,32 +72,24 @@ class AutomationViewModel: ObservableObject {
     func importEnableCommand() async {
         automationState = .creatingCommands
         
-        do {
-            try await ShortcutsRunner.importBaseEnableCommand()
-            await updateCommandsStatus()
-            automationState = .commandsCreated
-            
-            // Принудительно синхронизируем с AppState
-            appState?.syncAutomationState(hasCommands: true, hasAutomation: false)
-        } catch {
-            automationState = .error(String(format: "automation.error.import.enable.failed", error.localizedDescription))
-        }
+        ShortcutsRunner.importBaseEnableCommand()
+        await updateCommandsStatus()
+        automationState = .commandsCreated
+        
+        // Принудительно синхронизируем с AppState
+        appState?.syncAutomationState(hasCommands: true, hasAutomation: false)
     }
     
     /// Импорт команды для выключения серого режима
     func importDisableCommand() async {
         automationState = .creatingCommands
         
-        do {
-            try await ShortcutsRunner.importBaseDisableCommand()
-            await updateCommandsStatus()
-            automationState = .commandsCreated
-            
-            // Принудительно синхронизируем с AppState
-            appState?.syncAutomationState(hasCommands: true, hasAutomation: false)
-        } catch {
-            automationState = .error(String(format: "automation.error.import.disable.failed", error.localizedDescription))
-        }
+        ShortcutsRunner.importBaseDisableCommand()
+        await updateCommandsStatus()
+        automationState = .commandsCreated
+        
+        // Принудительно синхронизируем с AppState
+        appState?.syncAutomationState(hasCommands: true, hasAutomation: false)
     }
     
     /// Подтверждение создания команд
