@@ -12,7 +12,7 @@ struct MainTabView: View {
     
     var body: some View {
         TabView {
-            // Home Tab - бесплатная функциональность
+            // comment.home.tab
             HomeView()
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -20,7 +20,7 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            // Automation Tab - Premium функциональность
+            // comment.automation.tab
             AutomationView()
                 .tabItem {
                     Image(systemName: appState.hasPremium ? "wand.and.stars.inverse" : "wand.and.stars")

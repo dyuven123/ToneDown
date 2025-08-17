@@ -6,145 +6,155 @@
 //
 
 import SwiftUI
+import AVKit
 
 // MARK: - App Triggers Setup View
 struct AppTriggersSetupView: View {
     @EnvironmentObject var appState: AppState
     @State private var currentStep = 0
+    @State private var isViewActive = false
+    @State private var videoPlayers: [Int: AVPlayer] = [:]
     
     private let setupSteps = [
         SetupStep(
             number: 1,
-            title: "Создайте первую автоматизацию (включение)",
-            description: "• Нажмите на значок '+' или 'Новая автоматизация'\n• Выберите 'Приложение'",
-            action: "Создать автоматизацию",
+            title: "app.triggers.setup.step1.title",
+            description: "app.triggers.setup.step1.description",
+            action: "app.triggers.setup.step1.action",
             icon: "plus.circle.fill",
-            color: .green
+            color: .green,
+            screenshot: "step1_create_automation",
+            video: "step1_create_automation"
         ),
         SetupStep(
             number: 2,
-            title: "Выберите приложения и настройте триггер",
-            description: "• Выберите ВСЕ приложения, для которых должна работать автоматизация (Instagram, TikTok, YouTube и т.д.)\n• Затем в разделе 'Приложение' выберите 'Открыто'\n• И включите 'Немедленный запуск' для мгновенного срабатывания",
-            action: "Настроить приложения и триггер",
+            title: "app.triggers.setup.step2.title",
+            description: "app.triggers.setup.step2.description",
+            action: "app.triggers.setup.step2.action",
             icon: "app.badge.checkmark",
-            color: .purple
+            color: .purple,
+            screenshot: "step2_select_apps",
+            video: "step2_select_apps"
         ),
         // Убираем дублирующийся шаг 3
         SetupStep(
             number: 3,
-            title: "Выберите команду 'Grayscale On'",
-            description: "• Выберите команду 'Grayscale On' (включение серого режима) из списка ваших команд\n• Если команда не найдена, вернитесь к экрану создания команд",
-            action: "Выбрать команду",
+            title: "app.triggers.setup.step3.title",
+            description: "app.triggers.setup.step3.description",
+            action: "app.triggers.setup.step3.action",
             icon: "checkmark.circle.fill",
-            color: .green
+            color: .green,
+            screenshot: "step3_select_grayscale_on",
+            video: "step3_select_grayscale_on"
         ),
         // Шаг 4: Создание второй автоматизации
         SetupStep(
             number: 4,
-            title: "Создайте вторую автоматизацию (выключение)",
-            description: "• Нажмите на значок '+' и выберите 'Приложение'",
-            action: "Создать автоматизацию",
+            title: "app.triggers.setup.step4.title",
+            description: "app.triggers.setup.step4.description",
+            action: "app.triggers.setup.step4.action",
             icon: "plus.circle.fill",
-            color: .green
+            color: .green,
+            screenshot: "step4_create_second_automation",
+            video: "step4_create_second_automation"
         ),
         // Шаг 5: Настройка триггера для выключения
         SetupStep(
             number: 5,
-            title: "Настройте триггер 'Закрыто'",
-            description: "• Выберите те же приложения, что и в шаге 2\n• В разделе 'Приложение' выберите 'Закрыто'\n• Включите 'Немедленный запуск'",
-            action: "Настроить триггер",
+            title: "app.triggers.setup.step5.title",
+            description: "app.triggers.setup.step5.description",
+            action: "app.triggers.setup.step5.action",
             icon: "xmark.circle.fill",
-            color: .red
+            color: .red,
+            screenshot: "step5_configure_closed_trigger",
+            video: "step5_configure_closed_trigger"
         ),
         // Шаг 6: Выбор команды для выключения
         SetupStep(
             number: 6,
-            title: "Выберите команду 'Grayscale Off'",
-            description: "• Выберите команду 'Grayscale Off' (выключение серого режима) из списка ваших команд\n• Это автоматически выключит серый режим при закрытии приложений",
-            action: "Выбрать команду",
+            title: "app.triggers.setup.step6.title",
+            description: "app.triggers.setup.step6.description",
+            action: "app.triggers.setup.step6.action",
             icon: "checkmark.circle.fill",
-            color: .orange
+            color: .orange,
+            screenshot: "step6_select_grayscale_off",
+            video: "step6_select_grayscale_off"
         ),
         // Шаг 7: Тестирование автоматизации
         SetupStep(
             number: 7,
-            title: "Протестируйте автоматизацию",
-            description: "• Откройте любое выбранное приложение - экран должен стать серым\n• Закройте приложение - экран должен вернуться к нормальным цветам\n• Если что-то не работает, вернитесь к соответствующим шагам настройки",
-            action: "Протестировать",
+            title: "app.triggers.setup.step7.title",
+            description: "app.triggers.setup.step7.description",
+            action: "app.triggers.setup.step7.action",
             icon: "play.circle.fill",
-            color: .blue
+            color: .blue,
+            screenshot: "step7_test_automation",
+            video: "step7_test_automation"
         )
     ]
     
     private let automationInstructions = [
         AutomationInstruction(
             stepNumber: 1,
-            title: "Откройте приложение Команды",
-            description: "Найдите и запустите приложение Команды на вашем iPhone"
+            title: "app.triggers.setup.instruction.step1.title",
+            description: "app.triggers.setup.instruction.step1.description"
         ),
         AutomationInstruction(
             stepNumber: 2,
-            title: "Создайте первую автоматизацию (включение)",
-            description: "Нажмите на значок '+' и выберите 'Создать персональную автоматизацию'"
+            title: "app.triggers.setup.instruction.step2.title",
+            description: "app.triggers.setup.instruction.step2.description"
         ),
         AutomationInstruction(
             stepNumber: 3,
-            title: "Выберите триггер 'Приложение'",
-            description: "Прокрутите вниз и выберите 'Приложение' в разделе 'Приложение'"
+            title: "app.triggers.setup.instruction.step3.title",
+            description: "app.triggers.setup.instruction.step3.description"
         ),
         AutomationInstruction(
             stepNumber: 4,
-            title: "Выберите приложения и настройте 'Открывается'",
-            description: "Выберите ВСЕ приложения, для которых должна работать автоматизация (Instagram, TikTok, YouTube и т.д.) и убедитесь, что выбрано 'Открывается'"
+            title: "app.triggers.setup.instruction.step4.title",
+            description: "app.triggers.setup.instruction.step4.description"
         ),
         AutomationInstruction(
             stepNumber: 5,
-            title: "Добавьте действие 'Выполнить команду'",
-            description: "Нажмите 'Добавить действие' и найдите 'Выполнить команду'"
+            title: "app.triggers.setup.instruction.step5.title",
+            description: "app.triggers.setup.instruction.step5.description"
         ),
         AutomationInstruction(
             stepNumber: 6,
-            title: "Выберите команду 'Grayscale On'",
-            description: "Выберите команду 'Grayscale On' (включение серого режима) из списка"
+            title: "app.triggers.setup.instruction.step6.title",
+            description: "app.triggers.setup.instruction.step6.description"
         ),
         AutomationInstruction(
             stepNumber: 7,
-            title: "Отключите подтверждение и сохраните",
-            description: "Отключите 'Спрашивать перед запуском' и нажмите 'Готово'"
+            title: "app.triggers.setup.instruction.step7.title",
+            description: "app.triggers.setup.instruction.step7.description"
         ),
         AutomationInstruction(
             stepNumber: 8,
-            title: "Создайте вторую автоматизацию (выключение)",
-            description: "Повторите шаги 2-7, но выберите 'Grayscale Off' и настройте триггер 'Закрывается'"
+            title: "app.triggers.setup.instruction.step8.title",
+            description: "app.triggers.setup.instruction.step8.description"
         )
     ]
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 32) {
-                // Header
-                VStack(spacing: 16) {
-                    Text("Пошаговая настройка автоматизации")
-                        .font(.title2.weight(.bold))
-                        .foregroundColor(.primary)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 20)
-                    
-                    Text("Следуйте инструкциям для создания автоматического включения серого режима")
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 20)
-                }
-                .padding(.top, 20)
-                
+                ScrollView {
+            VStack(spacing: 24) {
                 // Progress indicator with checkboxes
-                VStack(spacing: 16) {
+                VStack(spacing: 12) {
                     HStack(spacing: 12) {
                         ForEach(0..<setupSteps.count, id: \.self) { index in
                             Button {
                                 withAnimation(.easeInOut(duration: 0.3)) {
                                     currentStep = index
+                                    // Перезапускаем видео для нового шага
+                                    if let videoName = setupSteps[index].video {
+                                        if isViewActive {
+                                            if let player = videoPlayers[index] {
+                                                player.seek(to: .zero)
+                                                player.play()
+                                            }
+                                        }
+                                    }
                                 }
                             } label: {
                                 ZStack {
@@ -165,14 +175,14 @@ struct AppTriggersSetupView: View {
                         }
                     }
                     
-                    Text("Шаг \(currentStep + 1) из \(setupSteps.count)")
+                    Text(String(format: LocalizationHelper.localizedString("app.triggers.setup.step", comment: ""), currentStep + 1, setupSteps.count))
                         .font(.caption.weight(.medium))
                         .foregroundColor(.secondary)
                 }
                 .padding(.horizontal, 20)
                 
                 // Current step card with detailed instructions
-                VStack(spacing: 20) {
+                VStack(spacing: 16) {
                     // Убираем ограничения по высоте, чтобы контент мог расширяться
                     let step = setupSteps[currentStep]
                     
@@ -189,11 +199,11 @@ struct AppTriggersSetupView: View {
                         }
                         
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(step.title)
+                            Text(LocalizedStringKey(step.title))
                                 .font(.title3.weight(.semibold))
                                 .foregroundColor(.primary)
                             
-                            Text(step.description)
+                            Text(LocalizedStringKey(step.description))
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -201,8 +211,282 @@ struct AppTriggersSetupView: View {
                         
                         Spacer()
                     }
+                    .padding(.bottom, 8)
                     
-                    // Пошаговые инструкции теперь являются основными шагами
+                    // Video or Screenshot - показываем если есть
+                    if let videoName = step.video {
+                        // Сначала пробуем найти в папке Resources/Videos
+                        if let videoURL = Bundle.main.url(forResource: videoName, withExtension: "mp4", subdirectory: "Resources/Videos") {
+                            VStack(spacing: 0) {
+                                // Красивая рамка для видео
+                                ZStack {
+                                    // Фоновая рамка с градиентом
+                                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                        .fill(
+                                            LinearGradient(
+                                                colors: [
+                                                    DS.Color.accent.opacity(0.1),
+                                                    DS.Color.accent.opacity(0.05),
+                                                    DS.Color.accent.opacity(0.02)
+                                                ],
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                                            )
+                                        )
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                                .stroke(
+                                                    LinearGradient(
+                                                        colors: [
+                                                            DS.Color.accent.opacity(0.3),
+                                                            DS.Color.accent.opacity(0.1)
+                                                        ],
+                                                        startPoint: .topLeading,
+                                                        endPoint: .bottomTrailing
+                                                    ),
+                                                    lineWidth: 2
+                                                )
+                                        )
+                                    
+                                    // Видео с закругленными углами
+                                    VideoPlayer(player: getOrCreatePlayer(for: step.number, with: videoURL))
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxHeight: 300)
+                                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                        .padding(8)
+                                }
+                                .shadow(
+                                    color: DS.Color.accent.opacity(0.2),
+                                    radius: 20,
+                                    x: 0,
+                                    y: 8
+                                )
+                                .shadow(
+                                    color: .black.opacity(0.1),
+                                    radius: 8,
+                                    x: 0,
+                                    y: 4
+                                )
+                                
+                                // Индикатор воспроизведения
+                                HStack(spacing: 8) {
+                                    Image(systemName: "play.circle.fill")
+                                        .font(.caption)
+                                        .foregroundColor(DS.Color.accent)
+                                    Text(LocalizedStringKey("app.triggers.setup.video.playing"))
+                                        .font(.caption2.weight(.medium))
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding(.top, 8)
+                            }
+                            .onAppear {
+                                // Запускаем видео сразу
+                                playVideoForCurrentStep()
+                            }
+                        } else {
+                            // Fallback: попробуем найти в основном bundle
+                            if let videoURL = Bundle.main.url(forResource: videoName, withExtension: "mp4") {
+                                VStack(spacing: 0) {
+                                    // Красивая рамка для видео
+                                    ZStack {
+                                        // Фоновая рамка с градиентом
+                                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                            .fill(
+                                                LinearGradient(
+                                                    colors: [
+                                                        DS.Color.accent.opacity(0.1),
+                                                        DS.Color.accent.opacity(0.05),
+                                                        DS.Color.accent.opacity(0.02)
+                                                    ],
+                                                    startPoint: .topLeading,
+                                                    endPoint: .bottomTrailing
+                                                )
+                                            )
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                                    .stroke(
+                                                        LinearGradient(
+                                                            colors: [
+                                                                    DS.Color.accent.opacity(0.3),
+                                                                    DS.Color.accent.opacity(0.1)
+                                                                ],
+                                                                startPoint: .topLeading,
+                                                                endPoint: .bottomTrailing
+                                                            ),
+                                                        lineWidth: 2
+                                                    )
+                                            )
+                                        
+                                        // Видео с закругленными углами
+                                        VideoPlayer(player: getOrCreatePlayer(for: step.number, with: videoURL))
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(maxHeight: 300)
+                                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                            .padding(8)
+                                    }
+                                    .shadow(
+                                        color: DS.Color.accent.opacity(0.2),
+                                        radius: 20,
+                                        x: 0,
+                                        y: 8
+                                    )
+                                    .shadow(
+                                        color: .black.opacity(0.1),
+                                        radius: 8,
+                                        x: 0,
+                                        y: 4
+                                    )
+                                    
+                                    // Индикатор воспроизведения
+                                    HStack(spacing: 8) {
+                                        Image(systemName: "play.circle.fill")
+                                            .font(.caption)
+                                            .foregroundColor(DS.Color.accent)
+                                        Text(LocalizedStringKey("app.triggers.setup.video.playing"))
+                                            .font(.caption2.weight(.medium))
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .padding(.top, 8)
+                                }
+                                .onAppear {
+                                    // Запускаем видео с задержкой 2 секунды
+                                    playVideoForCurrentStep()
+                                }
+                            } else {
+                                // Отладочная информация
+                                Text("Видео не найдено: \(videoName).mp4")
+                                    .font(.caption)
+                                    .foregroundColor(.red)
+                                    .padding()
+                            }
+                        }
+                    }
+                    
+                    if let screenshotName = step.screenshot {
+                        VStack(spacing: 0) {
+                            // Красивая рамка для скриншота
+                            ZStack {
+                                // Фоновая рамка с градиентом
+                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [
+                                                DS.Color.accent.opacity(0.1),
+                                                DS.Color.accent.opacity(0.05),
+                                                DS.Color.accent.opacity(0.02)
+                                            ],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                            .stroke(
+                                                LinearGradient(
+                                                    colors: [
+                                                            DS.Color.accent.opacity(0.3),
+                                                            DS.Color.accent.opacity(0.1)
+                                                        ],
+                                                        startPoint: .topLeading,
+                                                        endPoint: .bottomTrailing
+                                                    ),
+                                                    lineWidth: 2
+                                                )
+                                            )
+                                
+                                // Скриншот с закругленными углами
+                                Image(screenshotName)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxHeight: 300)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                    .padding(8)
+                            }
+                            .shadow(
+                                color: DS.Color.accent.opacity(0.2),
+                                radius: 20,
+                                x: 0,
+                                y: 8
+                            )
+                            .shadow(
+                                color: .black.opacity(0.1),
+                                radius: 8,
+                                x: 0,
+                                y: 4
+                            )
+                            
+                            // Индикатор скриншота
+                            HStack(spacing: 8) {
+                                Image(systemName: "photo.fill")
+                                    .font(.caption)
+                                    .foregroundColor(DS.Color.accent)
+                                Text(LocalizedStringKey("app.triggers.setup.screenshot.indicator"))
+                                    .font(.caption2.weight(.medium))
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(.top, 8)
+                        }
+                    }
+                    
+                    // Если нет ни видео, ни скриншота, показываем красивую заглушку
+                    if step.video == nil && step.screenshot == nil {
+                        VStack(spacing: 0) {
+                            // Красивая рамка для заглушки
+                            ZStack {
+                                // Фоновая рамка с градиентом
+                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [
+                                                DS.Color.accent.opacity(0.1),
+                                                DS.Color.accent.opacity(0.05),
+                                                DS.Color.accent.opacity(0.02)
+                                            ],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                            .stroke(
+                                                LinearGradient(
+                                                    colors: [
+                                                            DS.Color.accent.opacity(0.3),
+                                                            DS.Color.accent.opacity(0.1)
+                                                        ],
+                                                        startPoint: .topLeading,
+                                                        endPoint: .bottomTrailing
+                                                    ),
+                                                    lineWidth: 2
+                                                )
+                                            )
+                                
+                                // Содержимое заглушки
+                                VStack(spacing: 16) {
+                                    Image(systemName: "photo")
+                                        .font(.system(size: 48))
+                                        .foregroundColor(DS.Color.accent.opacity(0.6))
+                                    Text(LocalizedStringKey("app.triggers.setup.placeholder.title"))
+                                        .font(.subheadline.weight(.medium))
+                                        .foregroundColor(.secondary)
+                                        .multilineTextAlignment(.center)
+                                }
+                                .padding(32)
+                            }
+                            .shadow(
+                                color: DS.Color.accent.opacity(0.2),
+                                radius: 20,
+                                x: 0,
+                                y: 8
+                            )
+                            .shadow(
+                                color: .black.opacity(0.1),
+                                radius: 8,
+                                x: 0,
+                                y: 4
+                            )
+                        }
+                    }
                     
                     // Action button - показываем для шагов 1 и 4
                     if step.number == 1 || step.number == 4 {
@@ -212,7 +496,7 @@ struct AppTriggersSetupView: View {
                             HStack(spacing: 12) {
                                 Image(systemName: step.icon)
                                     .font(.title3)
-                                Text(step.action)
+                                Text(LocalizedStringKey(step.action))
                                     .font(.headline.weight(.semibold))
                             }
                             .foregroundColor(.white)
@@ -230,7 +514,7 @@ struct AppTriggersSetupView: View {
                         }
                     }
                 }
-                .padding(.vertical, 24)
+                .padding(.vertical, 20)
                 .padding(.horizontal, 20)
                 .background(
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -249,12 +533,21 @@ struct AppTriggersSetupView: View {
                         Button {
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 currentStep -= 1
+                                // Перезапускаем видео для предыдущего шага
+                                if let videoName = setupSteps[currentStep].video {
+                                    if isViewActive {
+                                        if let player = videoPlayers[currentStep] {
+                                            player.seek(to: .zero)
+                                            player.play()
+                                        }
+                                    }
+                                }
                             }
                         } label: {
                             HStack(spacing: 8) {
                                 Image(systemName: "chevron.left")
                                     .font(.subheadline.weight(.semibold))
-                                Text("Назад")
+                                Text(LocalizedStringKey("app.triggers.setup.button.back"))
                                     .font(.headline.weight(.semibold))
                             }
                             .foregroundColor(DS.Color.accent)
@@ -271,10 +564,19 @@ struct AppTriggersSetupView: View {
                         Button {
                             withAnimation(.easeInOut(duration: 0.3)) {
                                 currentStep += 1
+                                // Перезапускаем видео для следующего шага
+                                if let videoName = setupSteps[currentStep].video {
+                                    if isViewActive {
+                                        if let player = videoPlayers[currentStep] {
+                                            player.seek(to: .zero)
+                                            player.play()
+                                        }
+                                    }
+                                }
                             }
                         } label: {
                             HStack(spacing: 8) {
-                                Text("Далее")
+                                Text(LocalizedStringKey("app.triggers.setup.button.next"))
                                     .font(.headline.weight(.semibold))
                                 Image(systemName: "chevron.right")
                                     .font(.subheadline.weight(.semibold))
@@ -284,7 +586,10 @@ struct AppTriggersSetupView: View {
                             .frame(height: 48)
                             .background(
                                 LinearGradient(
-                                    colors: [DS.Color.accent, DS.Color.accent.opacity(0.8)],
+                                    colors: [
+                                        DS.Color.accent,
+                                        DS.Color.accent.opacity(0.8)
+                                    ],
                                     startPoint: .leading,
                                     endPoint: .trailing
                                 )
@@ -294,17 +599,66 @@ struct AppTriggersSetupView: View {
                     }
                 }
                 .padding(.horizontal, 20)
+                .padding(.top, 8)
                 
                 // Пошаговые инструкции уже добавлены выше
                 
-
                 
-                Spacer(minLength: 40)
+                
+                Spacer(minLength: 24)
             }
+            .padding(.top, 8)
         }
-        .navigationTitle("Настройка автоматизации")
+        .navigationTitle(LocalizedStringKey("app.triggers.setup.title"))
         .navigationBarTitleDisplayMode(.inline)
         .background(Color(.systemGroupedBackground))
+        .onAppear {
+            isViewActive = true
+            
+            // Запускаем видео для текущего шага с небольшой задержкой для первого запуска
+            if let videoName = setupSteps[currentStep].video {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    if isViewActive {
+                        playVideoForCurrentStep()
+                    }
+                }
+            }
+        }
+        .onDisappear {
+            isViewActive = false
+            
+            // Останавливаем все видео при уходе с экрана
+            for player in videoPlayers.values {
+                player.pause()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+            // Приложение уходит в фон - останавливаем видео
+            isViewActive = false
+            for player in videoPlayers.values {
+                player.pause()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            // Приложение возвращается на передний план - запускаем видео сразу
+            isViewActive = true
+            if let videoName = setupSteps[currentStep].video {
+                playVideoForCurrentStep()
+            }
+        }
+        .onChange(of: currentStep) { newStep in
+            // При смене шага автоматически запускаем видео
+            if let videoName = setupSteps[newStep].video {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    if isViewActive {
+                        if let player = videoPlayers[newStep] {
+                            player.seek(to: .zero)
+                            player.play()
+                        }
+                    }
+                }
+            }
+        }
 
     }
     
@@ -328,6 +682,28 @@ struct AppTriggersSetupView: View {
         }
     }
     
+    private func getOrCreatePlayer(for stepNumber: Int, with url: URL) -> AVPlayer {
+        if let existingPlayer = videoPlayers[stepNumber] {
+            return existingPlayer
+        } else {
+            let newPlayer = AVPlayer(url: url)
+            videoPlayers[stepNumber] = newPlayer
+            return newPlayer
+        }
+    }
+    
+    private func playVideoForCurrentStep() {
+        guard let videoName = setupSteps[currentStep].video else { return }
+        
+        // Запускаем видео сразу без задержки
+        if self.isViewActive {
+            if let player = self.videoPlayers[self.currentStep] {
+                player.seek(to: .zero)
+                player.play()
+            }
+        }
+    }
+    
 
 }
 
@@ -339,6 +715,8 @@ struct SetupStep {
     let action: String
     let icon: String
     let color: Color
+    let screenshot: String? // Имя изображения из Assets
+    let video: String? // Имя видео файла из Assets
 }
 
 // MARK: - Automation Instruction Model

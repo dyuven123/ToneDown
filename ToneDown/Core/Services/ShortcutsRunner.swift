@@ -12,7 +12,7 @@ enum ShortcutsRunner {
         let encoded = name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? name
         guard let url = URL(string: "shortcuts://run-shortcut?name=\(encoded)") else { return }
         
-        // Проверяем, можем ли открыть URL (работает без LSApplicationQueriesSchemes для shortcuts://)
+        // comment.shortcuts.url.check
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }

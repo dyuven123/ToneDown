@@ -6,11 +6,100 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - Localization Helper
+/// Хелпер для управления локализацией в тестовых и продакшн сборках
+enum LocalizationHelper {
+    
+    // MARK: - Build Configuration
+    /// Определяет, является ли текущая сборка тестовой
+    static var isTestBuild: Bool {
+        #if DEBUG
+        return true
+        #else
+        return false
+        #endif
+    }
+    
+    /// Принудительно устанавливает английский язык для тестовых сборок
+    static var forcedLanguage: String? {
+        if isTestBuild {
+            return "en"
+        }
+        return nil
+    }
+    
+    // MARK: - Current Language
+    /// Возвращает текущий язык приложения
+    static var currentLanguage: String {
+        if let forcedLanguage = forcedLanguage {
+            return forcedLanguage
+        }
+        return Bundle.main.preferredLocalizations.first ?? "en"
+    }
+    
+    // MARK: - Language Display Name
+    /// Возвращает отображаемое название языка
+    static var currentLanguageDisplayName: String {
+        let language = currentLanguage
+        let locale = Locale(identifier: language)
+        return locale.localizedString(forLanguageCode: language) ?? language.uppercased()
+    }
+    
+    #if DEBUG
+    /// Отладочная информация о текущей локализации
+    static var debugInfo: String {
+        return """
+        🔍 Localization Debug Info:
+        • Build Type: \(isTestBuild ? "DEBUG (Test)" : "RELEASE")
+        • Forced Language: \(forcedLanguage ?? "None")
+        • Current Language: \(currentLanguage)
+        • Display Name: \(currentLanguageDisplayName)
+        • System Languages: \(Bundle.main.preferredLocalizations.joined(separator: ", "))
+        • Test String: "app.tagline" = "\(NSLocalizedString("app.tagline", comment: ""))"
+        • Forced Test String: "\(LocalizationHelper.testLocalization())"
+        """
+    }
+    
+    /// Тестирует принудительную локализацию
+    static func testLocalization() -> String {
+        if let forcedLanguage = forcedLanguage {
+            let bundle = Bundle.main
+            if let path = bundle.path(forResource: forcedLanguage, ofType: "lproj"),
+               let languageBundle = Bundle(path: path) {
+                return languageBundle.localizedString(forKey: "app.tagline", value: "FAILED", table: nil)
+            }
+        }
+        return "No forced language"
+    }
+    
+    /// Принудительно получает локализованную строку для тестовых сборок
+    static func localizedString(_ key: String, comment: String = "") -> String {
+        if let forcedLanguage = forcedLanguage {
+            let bundle = Bundle.main
+            if let path = bundle.path(forResource: forcedLanguage, ofType: "lproj"),
+               let languageBundle = Bundle(path: path) {
+                return languageBundle.localizedString(forKey: key, value: key, table: nil)
+            }
+        }
+        return NSLocalizedString(key, comment: comment)
+    }
+    #endif
+}
+
+// MARK: - String Extension
 extension String {
     /// Returns localized string for the current key
     var localized: String {
+        if let forcedLanguage = LocalizationHelper.forcedLanguage {
+            // Для тестовых сборок принудительно используем английский
+            let bundle = Bundle.main
+            if let path = bundle.path(forResource: forcedLanguage, ofType: "lproj"),
+               let languageBundle = Bundle(path: path) {
+                return languageBundle.localizedString(forKey: self, value: self, table: nil)
+            }
+        }
         return NSLocalizedString(self, comment: "")
     }
     
@@ -314,11 +403,36 @@ struct L10n {
             static let openShortcuts = "app.trigger.button.open.shortcuts".localized
         }
     }
-    
-
-    
-
-    
-
 }
+
+// MARK: - Preview Helper
+#if DEBUG
+/// Хелпер для превью, который принудительно устанавливает английский язык
+struct EnglishPreviewWrapper<Content: View>: View {
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        content
+            .environment(\.locale, Locale(identifier: "en"))
+    }
+}
+
+/// Хелпер для превью с русским языком
+struct RussianPreviewWrapper<Content: View>: View {
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        content
+            .environment(\.locale, Locale(identifier: "ru"))
+    }
+}
+#endif
 

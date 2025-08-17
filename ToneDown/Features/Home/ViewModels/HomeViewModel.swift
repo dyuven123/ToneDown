@@ -34,11 +34,11 @@ class HomeViewModel: ObservableObject {
     }
     
     var buttonTitle: String {
-        hasCompletedSetup ? "Включить серый режим" : "Настроить"
+        hasCompletedSetup ? "home.button.enable.grayscale" : "home.button.setup"
     }
     
     var buttonSubtitle: String {
-        hasCompletedSetup ? "Нажмите для переключения" : "Добавить команды"
+        hasCompletedSetup ? "home.button.tap.to.toggle" : "home.button.add.commands"
     }
     
     var buttonIcon: String {

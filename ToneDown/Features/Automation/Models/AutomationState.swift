@@ -33,11 +33,11 @@ enum AutomationError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .shortcutsNotAvailable:
-            return "Приложение Команды недоступно"
+            return "automation.state.shortcuts.unavailable"
         case .commandCreationFailed:
-            return "Не удалось создать команды"
+            return "automation.state.commands.creation.failed"
         case .automationSetupFailed:
-            return "Не удалось настроить автоматизацию"
+            return "automation.state.automation.setup.failed"
         }
     }
 }

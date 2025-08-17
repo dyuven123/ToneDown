@@ -17,21 +17,21 @@ struct SetupView: View {
                 
                 Spacer()
                 
-                // Центральная кнопка создания команды
+                // comment.central.command.creation.button
                 VStack(spacing: 16) {
                     Text("🚀")
                         .font(.system(size: 64))
                     
-                    Text("Создать команду")
+                    Text(LocalizedStringKey("setup.create.command.title"))
                         .font(.title.weight(.semibold))
                     
-                    Text("Откроет готовую команду\nдля импорта одним нажатием")
+                    Text(LocalizedStringKey("setup.create.command.subtitle"))
                         .font(.body)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                 }
                 
-                Button("Добавить команду") {
+                Button(LocalizedStringKey("setup.button.add.command")) {
                     ShortcutsRunner.createToggleGrayscaleShortcut()
                 } 
                 .font(.title2.weight(.semibold))
@@ -45,28 +45,28 @@ struct SetupView: View {
                 
                 Spacer()
                 
-                // Инструкция
+                // comment.instruction
                 VStack(spacing: 8) {
-                    Text("💡 **Что произойдет:**")
+                    Text(LocalizedStringKey("setup.info.title"))
                         .font(.subheadline.weight(.medium))
                     
-                    Text("Откроется экран импорта готовой команды\nтебе нужно будет только нажать \"Добавить\"")
+                    Text(LocalizedStringKey("setup.info.description"))
                         .font(.footnote)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                 }
                 
-                // Кнопка подтверждения после установки
+                // comment.confirmation.button.after.setup
                 if !appState.hasCompletedSetup {
                     VStack(spacing: 16) {
-                        Text("После добавления команды:")
+                        Text(LocalizedStringKey("setup.after.title"))
                             .font(.subheadline.weight(.medium))
                         
                         Button {
                             appState.completeSetup()
                             dismiss()
                         } label: {
-                            Text("✅ Я добавил команду")
+                            Text(LocalizedStringKey("setup.button.confirm"))
                                 .font(.body.weight(.medium))
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 12)
@@ -81,9 +81,9 @@ struct SetupView: View {
                 Spacer(minLength: 20)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .navigationTitle("Настройка")
+            .navigationTitle(LocalizedStringKey("setup.title"))
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button("Готово") { dismiss() })
+            .navigationBarItems(trailing: Button(LocalizedStringKey("setup.button.done")) { dismiss() })
         }
         .navigationViewStyle(.stack)
     }

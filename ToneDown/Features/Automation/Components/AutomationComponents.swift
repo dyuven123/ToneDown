@@ -38,13 +38,13 @@ struct ModernAutomationCard: View {
             
             // Content
             VStack(spacing: 8) {
-                Text(title)
+                Text(LocalizedStringKey(title))
                     .font(.system(size: 16, weight: .semibold, design: .rounded))
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineLimit(1)
                 
-                Text(subtitle)
+                Text(LocalizedStringKey(subtitle))
                     .font(.system(size: 12, weight: .medium, design: .rounded))
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -72,16 +72,16 @@ struct ModernAutomationCard: View {
     VStack(spacing: 20) {
         ModernAutomationCard(
             icon: "apps.iphone",
-            title: "Приложения",
-            subtitle: "Автоматическое включение при открытии",
+            title: "automation.components.apps.title",
+            subtitle: "automation.components.apps.subtitle",
             color: .purple,
             isEnabled: true
         )
         
         ModernAutomationCard(
             icon: "clock.fill",
-            title: "Расписание",
-            subtitle: "По времени суток",
+            title: "automation.components.schedule.title",
+            subtitle: "automation.components.schedule.subtitle",
             color: .orange,
             isEnabled: false
         )

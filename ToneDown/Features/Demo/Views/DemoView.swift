@@ -209,11 +209,11 @@ struct DemoView: View {
                 switch demo.appName {
                 case "TikTok":
                     tikTokContent(isGrayscale: demo.isGrayscale)
-                case "Домой":
+                case "demo.app.home":
                     homeScreenContent(isGrayscale: demo.isGrayscale)
-                case "Работа":
+                case "demo.app.work":
                     workContent(isGrayscale: demo.isGrayscale)
-                case "Сон":
+                case "demo.app.sleep":
                     sleepContent(isGrayscale: demo.isGrayscale)
                 default:
                     genericContent(isGrayscale: demo.isGrayscale)
@@ -279,7 +279,7 @@ struct DemoView: View {
     
     private func homeScreenContent(isGrayscale: Bool) -> some View {
         VStack(spacing: 12) {
-            Text("Главный экран")
+            Text(LocalizedStringKey("demo.content.homescreen"))
                 .font(.caption.weight(.medium))
                 .foregroundColor(isGrayscale ? .secondary : .primary)
             
@@ -321,7 +321,7 @@ struct DemoView: View {
                 }
             }
             
-            Text("Focus активен")
+            Text(LocalizedStringKey("demo.content.focus.active"))
                 .font(.caption2.weight(.medium))
                 .foregroundColor(isGrayscale ? .secondary : .blue)
         }
@@ -355,7 +355,7 @@ struct DemoView: View {
                     .foregroundColor(isGrayscale ? .secondary : .indigo)
             }
             
-            Text("Режим сна")
+            Text(LocalizedStringKey("demo.content.sleep.mode"))
                 .font(.caption2.weight(.medium))
                 .foregroundColor(isGrayscale ? .secondary : .indigo)
         }
@@ -375,8 +375,8 @@ struct DemoView: View {
     private func getAppColor(for appName: String) -> Color {
         switch appName {
         case "TikTok": return .black
-        case "Работа": return .blue
-        case "Сон": return .indigo
+        case "demo.app.work": return .blue
+        case "demo.app.sleep": return .indigo
         default: return .gray
         }
     }

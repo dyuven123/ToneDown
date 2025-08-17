@@ -50,20 +50,20 @@ struct HomeView: View {
 
                         VStack(spacing: 12) {
                             if appState.hasCompletedSetup {
-                                Text(L10n.Home.Button.toggle)
+                                Text(LocalizedStringKey("home.button.enable.grayscale"))
                                     .font(.title2).bold()
                                     .lineLimit(2)
-                                Text(L10n.Home.Button.toggleSubtitle)
+                                Text(LocalizedStringKey("home.button.tap.to.toggle"))
                                     .foregroundColor(.secondary)
                                     .font(.callout)
                                     .lineLimit(1)
                             } else {
                                 Text("⚙️")
                                     .font(.system(size: 64))
-                                Text(L10n.Home.Button.setup)
+                                Text(LocalizedStringKey("home.button.setup"))
                                     .font(.title2).bold()
                                     .lineLimit(1)
-                                Text(L10n.Home.Button.addCommand)
+                                Text(LocalizedStringKey("home.button.add.commands"))
                                     .foregroundColor(.secondary)
                                     .font(.callout)
                                     .lineLimit(2)
@@ -87,7 +87,7 @@ struct HomeView: View {
 
                 Spacer()
                 
-                // Premium Demo Block (показываем только после setup и без Premium)
+                // comment.premium.demo.block
                 if appState.hasCompletedSetup && !appState.hasPremium {
                     VStack(spacing: 16) {
                         Text(L10n.Premium.title)

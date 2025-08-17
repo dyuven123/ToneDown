@@ -22,9 +22,9 @@ struct BaseCommandsSetupContent: View {
             VStack(spacing: 12) {
                 Text("⚙️")
                     .font(.system(size: 40))
-                Text("Создание базовых команд")
+                Text(LocalizedStringKey("automation.content.basic.commands.title"))
                     .font(.title2.weight(.bold))
-                Text("Сначала создайте команды для включения и выключения серого режима")
+                Text(LocalizedStringKey("automation.content.basic.commands.subtitle"))
                     .font(.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -38,12 +38,12 @@ struct BaseCommandsSetupContent: View {
                         .font(.title3)
                         .foregroundColor(DS.Color.accent)
                     
-                    Text("Два шортката")
+                    Text(LocalizedStringKey("automation.content.two.shortcuts.title"))
                         .font(.system(size: 15, weight: .semibold, design: .rounded))
                         .foregroundColor(.primary)
                 }
                 
-                Text("Импортируйте готовые команды для управления серым режимом")
+                Text(LocalizedStringKey("automation.content.two.shortcuts.subtitle"))
                     .font(.system(size: 13, weight: .medium, design: .rounded))
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -71,11 +71,11 @@ struct BaseCommandsSetupContent: View {
                 }) {
                     HStack(spacing: 14) {
                         VStack(alignment: .leading, spacing: 3) {
-                            Text("Включить серый режим")
+                            Text(LocalizedStringKey("automation.content.enable.grayscale.title"))
                                 .font(.system(size: 15, weight: .semibold, design: .rounded))
                                 .foregroundColor(.white)
                             
-                            Text("Команда для активации")
+                            Text(LocalizedStringKey("automation.content.enable.grayscale.subtitle"))
                                 .font(.system(size: 13, weight: .medium, design: .rounded))
                                 .foregroundColor(.white.opacity(0.8))
                         }
@@ -107,11 +107,11 @@ struct BaseCommandsSetupContent: View {
                 }) {
                     HStack(spacing: 14) {
                         VStack(alignment: .leading, spacing: 3) {
-                            Text("Восстановить цвета")
+                            Text(LocalizedStringKey("automation.content.restore.colors.title"))
                                 .font(.system(size: 15, weight: .semibold, design: .rounded))
                                 .foregroundColor(.white)
                             
-                            Text("Команда для деактивации")
+                            Text(LocalizedStringKey("automation.content.restore.colors.subtitle"))
                                 .font(.system(size: 13, weight: .medium, design: .rounded))
                                 .foregroundColor(.white.opacity(0.8))
                         }
@@ -146,12 +146,12 @@ struct BaseCommandsSetupContent: View {
                         Image(systemName: "arrow.left.arrow.right")
                             .font(.subheadline)
                             .foregroundColor(.blue)
-                        Text("Важно!")
+                        Text(LocalizedStringKey("automation.content.important.title"))
                             .font(.subheadline.weight(.semibold))
                             .foregroundColor(.blue)
                     }
                     
-                    Text("После импорта команды вернитесь в приложение и нажмите кнопку ниже")
+                    Text(LocalizedStringKey("automation.content.important.subtitle"))
                         .font(.caption)
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
@@ -168,7 +168,7 @@ struct BaseCommandsSetupContent: View {
                 )
                 .padding(.horizontal, 16)
                 
-                Text("После добавления команд подтвердите создание")
+                Text(LocalizedStringKey("automation.content.confirm.after.adding"))
                     .font(.subheadline.weight(.medium))
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -181,7 +181,7 @@ struct BaseCommandsSetupContent: View {
                     HStack(spacing: 10) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.subheadline)
-                        Text("Команды созданы")
+                        Text(LocalizedStringKey("automation.content.commands.created"))
                             .font(.headline.weight(.semibold))
                     }
                     .foregroundColor(.white)
@@ -224,8 +224,8 @@ struct AutomationContent: View {
                 NavigationLink(destination: AppTriggersSetupView()) {
                     ModernAutomationCard(
                         icon: "apps.iphone",
-                        title: "Приложения",
-                        subtitle: "Автоматическое включение при открытии",
+                        title: "automation.content.apps.title",
+                        subtitle: "automation.content.apps.subtitle",
                         color: .purple,
                         isEnabled: true
                     )
@@ -234,8 +234,8 @@ struct AutomationContent: View {
                 
                 ModernAutomationCard(
                     icon: "clock.fill",
-                    title: "Расписание",
-                    subtitle: "По времени суток",
+                    title: "automation.content.schedule.title",
+                    subtitle: "automation.content.schedule.subtitle",
                     color: .orange,
                     isEnabled: true
                 )
@@ -243,15 +243,15 @@ struct AutomationContent: View {
                 ModernAutomationCard(
                     icon: "moon.zzz.fill",
                     title: "Focus",
-                    subtitle: "Интеграция с системой",
+                    subtitle: "automation.content.focus.subtitle",
                     color: .indigo,
                     isEnabled: true
                 )
                 
                 ModernAutomationCard(
                     icon: "location.fill",
-                    title: "Геолокация",
-                    subtitle: "По месту нахождения",
+                    title: "automation.content.location.title",
+                    subtitle: "automation.content.location.subtitle",
                     color: .green,
                     isEnabled: true
                 )
@@ -260,11 +260,11 @@ struct AutomationContent: View {
             
             // Quick help
             VStack(spacing: 16) {
-                Text("💡 Как настроить автоматизацию?")
+                Text(LocalizedStringKey("automation.content.how.to.setup"))
                     .font(.subheadline.weight(.semibold))
                     .foregroundColor(.primary)
                 
-                Text("Выберите тип автоматизации и следуйте инструкциям. Все автоматизации будут использовать созданные вами базовые команды.")
+                Text(LocalizedStringKey("automation.content.instructions"))
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -284,7 +284,7 @@ struct AutomationContent: View {
                 HStack(spacing: 8) {
                     Image(systemName: "arrow.clockwise")
                         .font(.subheadline)
-                    Text("Пересоздать команды")
+                    Text(LocalizedStringKey("automation.content.recreate.commands"))
                         .font(.subheadline.weight(.medium))
                 }
                 .foregroundColor(.secondary)
@@ -312,9 +312,9 @@ struct FreeUserContent: View {
             VStack(spacing: 16) {
                 Text("🔒")
                     .font(.system(size: 56))
-                Text("Требуется Premium")
+                Text(LocalizedStringKey("automation.content.premium.required"))
                     .font(.title.weight(.bold))
-                Text("Автоматизация доступна только для Premium пользователей")
+                Text(LocalizedStringKey("automation.content.premium.description"))
                     .font(.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -328,7 +328,7 @@ struct FreeUserContent: View {
                 HStack(spacing: 12) {
                     Image(systemName: "crown.fill")
                         .font(.title3)
-                    Text("Получить Premium")
+                    Text(LocalizedStringKey("automation.content.get.premium"))
                         .font(.headline.weight(.semibold))
                 }
                 .foregroundColor(.white)
@@ -353,7 +353,7 @@ struct FreeUserContent: View {
                 HStack(spacing: 12) {
                     Image(systemName: "play.circle.fill")
                         .font(.title3)
-                    Text("Попробовать демо")
+                    Text(LocalizedStringKey("automation.content.try.demo"))
                         .font(.headline.weight(.semibold))
                 }
                 .foregroundColor(DS.Color.accent)

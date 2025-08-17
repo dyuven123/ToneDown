@@ -26,23 +26,23 @@ class PurchaseViewModel: ObservableObject {
     let premiumFeatures = [
         PurchaseFeatureModel(
             icon: "clock.fill",
-            title: "Автоматическое расписание",
-            description: "Включение/выключения по времени"
+            title: "purchase.feature.schedule.title",
+            description: "purchase.feature.schedule.description"
         ),
         PurchaseFeatureModel(
             icon: "apps.iphone",
-            title: "Smart триггеры приложений",
-            description: "Автоматика для TikTok, Instagram и других"
+            title: "purchase.feature.apps.title",
+            description: "purchase.feature.apps.description"
         ),
         PurchaseFeatureModel(
             icon: "moon.zzz.fill",
-            title: "Focus режимы",
-            description: "Интеграция с режимами концентрации"
+            title: "purchase.feature.focus.title",
+            description: "purchase.feature.focus.description"
         ),
         PurchaseFeatureModel(
             icon: "location.fill",
-            title: "Геолокация",
-            description: "Автоматизация по местоположению"
+            title: "purchase.feature.location.title",
+            description: "purchase.feature.location.description"
         )
     ]
     
@@ -57,11 +57,11 @@ class PurchaseViewModel: ObservableObject {
     
     var purchaseButtonTitle: String {
         if isPurchasing {
-            return "Покупка..."
+            return "purchase.button.purchasing"
         } else if hasPremium {
-            return "Уже куплено"
+            return "purchase.button.already.purchased"
         } else {
-            return "✨ Купить за \(premiumPrice)"
+            return String(format: "purchase.button.buy", premiumPrice)
         }
     }
     
@@ -114,7 +114,7 @@ class PurchaseViewModel: ObservableObject {
             }
         } catch {
             await MainActor.run {
-                purchaseError = "Не удалось восстановить покупки: \(error.localizedDescription)"
+                purchaseError = String(format: "purchase.error.restore.failed", error.localizedDescription)
                 showError = true
             }
         }

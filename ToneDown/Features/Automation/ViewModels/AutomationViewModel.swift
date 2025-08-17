@@ -80,7 +80,7 @@ class AutomationViewModel: ObservableObject {
             // Принудительно синхронизируем с AppState
             appState?.syncAutomationState(hasCommands: true, hasAutomation: false)
         } catch {
-            automationState = .error("Не удалось импортировать команду включения: \(error.localizedDescription)")
+            automationState = .error(String(format: "automation.error.import.enable.failed", error.localizedDescription))
         }
     }
     
@@ -96,7 +96,7 @@ class AutomationViewModel: ObservableObject {
             // Принудительно синхронизируем с AppState
             appState?.syncAutomationState(hasCommands: true, hasAutomation: false)
         } catch {
-            automationState = .error("Не удалось импортировать команду выключения: \(error.localizedDescription)")
+            automationState = .error(String(format: "automation.error.import.disable.failed", error.localizedDescription))
         }
     }
     

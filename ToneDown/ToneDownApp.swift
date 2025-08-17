@@ -22,7 +22,8 @@ struct ToneDownApp: App {
                 }
             }
             .environmentObject(appState)
-            .preferredColorScheme(nil) // поддерживаем и светлую, и тёмную
+            .preferredColorScheme(nil) // comment.light.dark.support
+            .environment(\.locale, Locale(identifier: LocalizationHelper.currentLanguage))
         }
     }
 }

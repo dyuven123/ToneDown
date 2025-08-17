@@ -14,53 +14,53 @@ struct DetailedInstructionsView: View {
     private let instructions = [
         InstructionStep(
             number: 1,
-            title: "Команды уже созданы",
-            description: "Базовые команды для включения и выключения серого режима уже добавлены в приложение Команды"
+            title: "detailed.instructions.commands.created.title",
+            description: "detailed.instructions.commands.created.description"
         ),
         InstructionStep(
             number: 2,
-            title: "Откройте приложение Команды",
-            description: "Найдите и запустите приложение Команды на вашем iPhone"
+            title: "detailed.instructions.open.shortcuts.title",
+            description: "detailed.instructions.open.shortcuts.description"
         ),
         InstructionStep(
             number: 3,
-            title: "Создайте первую автоматизацию (включение)",
-            description: "Нажмите на значок '+' и выберите 'Создать персональную автоматизацию'"
+            title: "detailed.instructions.create.first.automation.title",
+            description: "detailed.instructions.create.first.automation.description"
         ),
         InstructionStep(
             number: 4,
-            title: "Выберите триггер 'Приложение'",
-            description: "Прокрутите вниз и выберите 'Приложение' в разделе 'Приложение'"
+            title: "detailed.instructions.select.app.trigger.title",
+            description: "detailed.instructions.select.app.trigger.description"
         ),
         InstructionStep(
             number: 5,
-            title: "Выберите приложения и настройте 'Открывается'",
-            description: "Выберите ВСЕ приложения, для которых должна работать автоматизация (Instagram, TikTok, YouTube и т.д.) и убедитесь, что выбрано 'Открывается'"
+            title: "detailed.instructions.select.apps.configure.title",
+            description: "detailed.instructions.select.apps.configure.description"
         ),
         InstructionStep(
             number: 6,
-            title: "Добавьте действие 'Выполнить команду'",
-            description: "Нажмите 'Добавить действие' и найдите 'Выполнить команду'"
+            title: "detailed.instructions.add.run.command.title",
+            description: "detailed.instructions.add.run.command.description"
         ),
         InstructionStep(
             number: 7,
-            title: "Выберите команду 'Grayscale On'",
-            description: "Выберите команду 'Grayscale On' (включение серого режима) из списка"
+            title: "detailed.instructions.select.grayscale.on.title",
+            description: "detailed.instructions.select.grayscale.on.description"
         ),
         InstructionStep(
             number: 8,
-            title: "Отключите подтверждение и сохраните",
-            description: "Отключите 'Спрашивать перед запуском' и нажмите 'Готово'"
+            title: "detailed.instructions.disable.confirmation.title",
+            description: "detailed.instructions.disable.confirmation.description"
         ),
         InstructionStep(
             number: 9,
-            title: "Создайте вторую автоматизацию (выключение)",
-            description: "Повторите шаги 3-8, но выберите 'Закрывается', команду 'Grayscale Off' и те же приложения"
+            title: "detailed.instructions.create.second.automation.title",
+            description: "detailed.instructions.create.second.automation.description"
         ),
         InstructionStep(
             number: 10,
-            title: "Проверьте работу",
-            description: "Откройте и закройте приложение - серый режим должен включаться и выключаться автоматически"
+            title: "detailed.instructions.test.work.title",
+            description: "detailed.instructions.test.work.description"
         )
     ]
     
@@ -72,9 +72,9 @@ struct DetailedInstructionsView: View {
                     VStack(spacing: 12) {
                         Text("📋")
                             .font(.system(size: 48))
-                        Text("Подробные инструкции")
+                        Text(LocalizedStringKey("detailed.instructions.title"))
                             .font(.title.weight(.bold))
-                        Text("Пошаговое руководство по настройке автоматизации")
+                        Text(LocalizedStringKey("detailed.instructions.subtitle"))
                             .font(.body)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
@@ -91,28 +91,28 @@ struct DetailedInstructionsView: View {
                     
                     // Tips section
                     VStack(spacing: 16) {
-                        Text("💡 Полезные советы")
+                        Text(LocalizedStringKey("detailed.instructions.useful.tips"))
                             .font(.title3.weight(.semibold))
                         
                         VStack(alignment: .leading, spacing: 12) {
                             TipRow(
                                 icon: "checkmark.circle.fill",
-                                text: "Для каждого приложения нужно создать ДВЕ автоматизации",
+                                text: "detailed.instructions.tip.two.automations",
                                 color: .green
                             )
                             TipRow(
                                 icon: "info.circle.fill",
-                                text: "Выберите ВСЕ нужные приложения сразу в первой автоматизации",
+                                text: "detailed.instructions.tip.select.all.apps",
                                 color: .blue
                             )
                             TipRow(
                                 icon: "checkmark.circle.fill",
-                                text: "Базовые команды уже созданы и готовы к использованию",
+                                text: "detailed.instructions.tip.base.commands.ready",
                                 color: .green
                             )
                             TipRow(
                                 icon: "lightbulb.fill",
-                                text: "В обеих автоматизациях должны быть выбраны одинаковые приложения",
+                                text: "detailed.instructions.tip.same.apps.both",
                                 color: .purple
                             )
                         }
@@ -128,9 +128,9 @@ struct DetailedInstructionsView: View {
                     Spacer(minLength: 40)
                 }
             }
-            .navigationTitle("Инструкции")
+            .navigationTitle(LocalizedStringKey("detailed.instructions.navigation.title"))
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button("Готово") {
+            .navigationBarItems(trailing: Button(LocalizedStringKey("detailed.instructions.button.done")) {
                 dismiss()
             })
         }
@@ -154,11 +154,11 @@ struct InstructionRow: View {
             }
             
             VStack(alignment: .leading, spacing: 4) {
-                Text(instruction.title)
+                Text(LocalizedStringKey(instruction.title))
                     .font(.subheadline.weight(.semibold))
                     .foregroundColor(.primary)
                 
-                Text(instruction.description)
+                Text(LocalizedStringKey(instruction.description))
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .lineLimit(3)
@@ -187,7 +187,7 @@ struct TipRow: View {
                 .font(.subheadline)
                 .foregroundColor(color)
             
-            Text(text)
+            Text(LocalizedStringKey(text))
                 .font(.subheadline)
                 .foregroundColor(.primary)
             

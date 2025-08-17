@@ -23,7 +23,7 @@ struct AutomationView: View {
             ScrollView {
                 VStack(spacing: 0) {
                     // Centered title
-                    Text("Автоматизация")
+                    Text(LocalizedStringKey("automation.view.title"))
                         .font(.largeTitle.weight(.bold))
                         .frame(maxWidth: .infinity)
                         .padding(.top, 16)

@@ -22,23 +22,23 @@ class OnboardingViewModel: ObservableObject {
     let pages = [
         OnboardingPage(
             emoji: "📱",
-            title: "Добро пожаловать в ToneDown",
-            description: "Приложение для автоматического включения серого режима на вашем iPhone"
+            title: "onboarding.page1.title",
+            description: "onboarding.page1.description"
         ),
         OnboardingPage(
             emoji: "🎨",
-            title: "Серый режим",
-            description: "Уменьшает отвлекающие цвета и помогает сосредоточиться на важном"
+            title: "onboarding.page2.title",
+            description: "onboarding.page2.description"
         ),
         OnboardingPage(
             emoji: "🧠",
-            title: "Автоматизация",
-            description: "Автоматически включает серый режим при открытии выбранных приложений"
+            title: "onboarding.page3.title",
+            description: "onboarding.page3.description"
         ),
         OnboardingPage(
             emoji: "⚡",
-            title: "Простота",
-            description: "Одна кнопка для быстрого переключения серого режима"
+            title: "onboarding.page4.title",
+            description: "onboarding.page4.description"
         )
     ]
     
@@ -60,7 +60,7 @@ class OnboardingViewModel: ObservableObject {
     }
     
     var buttonTitle: String {
-        isLastPage ? "Начать" : "Далее"
+        isLastPage ? "onboarding.button.start" : "onboarding.button.next"
     }
     
     var currentPageData: OnboardingPage {

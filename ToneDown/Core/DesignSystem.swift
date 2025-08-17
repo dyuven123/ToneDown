@@ -9,14 +9,14 @@ import SwiftUI
 
 enum DS {
     enum Color {
-        // Светлая палитра
+        // comment.light.palette
         static let backgroundLight = SwiftUI.Color(red: 248/255, green: 250/255, blue: 252/255) // #F8FAFC
         static let card = SwiftUI.Color.white
         static let textPrimary = SwiftUI.Color(red: 11/255, green: 16/255, blue: 32/255) // #0B1020
         static let textSecondary = SwiftUI.Color(red: 107/255, green: 114/255, blue: 128/255) // #6B7280
         static let accent = SwiftUI.Color(red: 79/255, green: 70/255, blue: 229/255) // #4F46E5
 
-        // Тёмная палитра (авто-адаптация)
+        // comment.dark.palette
         static let backgroundDark = SwiftUI.Color(red: 16/255, green: 18/255, blue: 24/255)
         static let cardDark = SwiftUI.Color(red: 28/255, green: 30/255, blue: 38/255)
     }

@@ -103,7 +103,7 @@ struct OnboardingView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(appBackground.ignoresSafeArea())
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            // Скрыть индикаторы страниц при возврате в приложение
+            // comment.hide.page.indicators
         }
     }
     
@@ -147,7 +147,7 @@ struct OnboardingPageView: View {
 }
 
 // MARK: - OnboardingPage Model
-// OnboardingPage определена в OnboardingViewModel.swift
+// comment.onboarding.page.defined.in.viewmodel
 
 // MARK: - Preview
 #Preview {

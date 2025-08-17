@@ -174,3 +174,209 @@
 "premium.feature.location" = "⚡ Location triggers - automation at work, home, gym";
 "premium.feature.rules" = "🎯 Smart rules - set up once, works forever";
 
+// MARK: - App Triggers Setup View
+"app.triggers.setup.title" = "Step-by-step automation setup";
+"app.triggers.setup.step" = "Step %d of %d";
+"app.triggers.setup.step.prefix" = "Step";
+"app.triggers.setup.step.separator" = "of";
+"app.triggers.setup.step1.title" = "Create first automation (enable)";
+"app.triggers.setup.step1.description" = "• Tap the '+' icon or 'New Automation'\n• Select 'App'";
+"app.triggers.setup.step1.action" = "Create automation";
+"app.triggers.setup.step2.title" = "Select apps and configure trigger";
+"app.triggers.setup.step2.description" = "• Select ALL apps for which automation should work (Instagram, TikTok, YouTube, etc.)\n• Then in the 'App' section select 'Opens'\n• And enable 'Immediate' for instant triggering";
+"app.triggers.setup.step2.action" = "Configure apps and trigger";
+"app.triggers.setup.step3.title" = "Select 'Grayscale On' command";
+"app.triggers.setup.step3.description" = "• Select 'Grayscale On' command (enable grayscale mode) from your commands list\n• If command not found, return to command creation screen";
+"app.triggers.setup.step3.action" = "Select command";
+"app.triggers.setup.step4.title" = "Create second automation (disable)";
+"app.triggers.setup.step4.description" = "• Tap the '+' icon and select 'App'";
+"app.triggers.setup.step4.action" = "Create automation";
+"app.triggers.setup.step5.title" = "Configure 'Closed' trigger";
+"app.triggers.setup.step5.description" = "• Select the same apps as in step 2\n• In the 'App' section select 'Closes'\n• Enable 'Immediate'";
+"app.triggers.setup.step5.action" = "Configure trigger";
+"app.triggers.setup.step6.title" = "Select 'Grayscale Off' command";
+"app.triggers.setup.step6.description" = "• Select 'Grayscale Off' command (disable grayscale mode) from your commands list\n• This will automatically disable grayscale mode when closing apps";
+"app.triggers.setup.step6.action" = "Select command";
+"app.triggers.setup.step7.title" = "Test automation";
+"app.triggers.setup.step7.description" = "• Open any selected app - screen should become gray\n• Close the app - screen should return to normal colors\n• If something doesn't work, return to the corresponding setup steps";
+"app.triggers.setup.step7.action" = "Test";
+"app.triggers.setup.placeholder.title" = "Screenshot or video";
+"app.triggers.setup.button.back" = "Back";
+"app.triggers.setup.button.next" = "Next";
+"app.triggers.setup.instruction.step1.title" = "Open Shortcuts app";
+"app.triggers.setup.instruction.step1.description" = "Find and launch Shortcuts app on your iPhone";
+"app.triggers.setup.instruction.step2.title" = "Create first automation (enable)";
+"app.triggers.setup.instruction.step2.description" = "Tap the '+' icon and select 'Create Personal Automation'";
+"app.triggers.setup.instruction.step3.title" = "Select 'App' trigger";
+"app.triggers.setup.instruction.step3.description" = "Scroll down and select 'App' in the 'App' section";
+"app.triggers.setup.instruction.step4.title" = "Select apps and configure 'Opens'";
+"app.triggers.setup.instruction.step4.description" = "Select ALL apps for which automation should work (Instagram, TikTok, YouTube, etc.) and make sure 'Opens' is selected";
+"app.triggers.setup.instruction.step5.title" = "Add 'Run Shortcut' action";
+"app.triggers.setup.instruction.step5.description" = "Tap 'Add Action' and find 'Run Shortcut'";
+"app.triggers.setup.instruction.step6.title" = "Select 'Grayscale On' command";
+"app.triggers.setup.instruction.step6.description" = "Select 'Grayscale On' command (enable grayscale mode) from the list";
+"app.triggers.setup.instruction.step7.title" = "Disable confirmation and save";
+"app.triggers.setup.instruction.step7.description" = "Turn off 'Ask Before Running' and tap 'Done'";
+"app.triggers.setup.instruction.step8.title" = "Create second automation (disable)";
+"app.triggers.setup.instruction.step8.description" = "Repeat steps 2-7, but select 'Grayscale Off' and configure 'Closes' trigger";
+
+// MARK: - Purchase Features
+"purchase.feature.schedule.title" = "Automatic Schedule";
+"purchase.feature.schedule.description" = "Enable/disable by time";
+"purchase.feature.apps.title" = "Smart App Triggers";
+"purchase.feature.apps.description" = "Automation for TikTok, Instagram and others";
+"purchase.feature.focus.title" = "Focus Modes";
+"purchase.feature.focus.description" = "Integration with concentration modes";
+"purchase.feature.location.title" = "Geolocation";
+"purchase.feature.location.description" = "Automation by location";
+
+// MARK: - Purchase Button States
+"purchase.button.purchasing" = "Purchasing...";
+"purchase.button.already.purchased" = "Already purchased";
+"purchase.button.buy" = "✨ Buy for %@";
+"purchase.error.restore.failed" = "Failed to restore purchases: %@";
+
+// MARK: - Comments (for developers)
+"comment.light.dark.support" = "support both light and dark";
+"comment.light.palette" = "Light palette";
+"comment.dark.palette" = "Dark palette (auto-adaptation)";
+"comment.shortcuts.url.check" = "Check if we can open URL (works without LSApplicationQueriesSchemes for shortcuts://)";
+"comment.premium.demo.block" = "Premium Demo Block (show only after setup and without Premium)";
+"comment.home.tab" = "Home Tab - free functionality";
+"comment.automation.tab" = "Automation Tab - Premium functionality";
+
+// MARK: - Onboarding
+"onboarding.page1.title" = "Welcome to ToneDown";
+"onboarding.page1.description" = "App for automatic grayscale mode on your iPhone";
+"onboarding.page2.title" = "Grayscale Mode";
+"onboarding.page2.description" = "Reduces distracting colors and helps focus on what's important";
+"onboarding.page3.title" = "Automation";
+"onboarding.page3.description" = "Automatically enables grayscale mode when opening selected apps";
+"onboarding.page4.title" = "Simplicity";
+"onboarding.page4.description" = "One button for quick grayscale mode switching";
+"onboarding.button.next" = "Next";
+"onboarding.button.start" = "Start";
+
+// MARK: - Comments
+"comment.hide.page.indicators" = "Hide page indicators when returning to app";
+"comment.onboarding.page.defined.in.viewmodel" = "OnboardingPage is defined in OnboardingViewModel.swift";
+"comment.central.command.creation.button" = "Central command creation button";
+"comment.instruction" = "Instruction";
+
+// MARK: - Setup View
+"setup.title" = "Setup";
+"setup.create.command.title" = "Create Command";
+"setup.create.command.subtitle" = "Opens ready command\nfor import with one tap";
+"setup.button.add.command" = "Add Command";
+"setup.info.title" = "💡 **What will happen:**";
+"setup.info.description" = "Import screen will open with ready command\nyou just need to tap \"Add\"";
+"setup.after.title" = "After adding the command:";
+"setup.button.confirm" = "✅ I added the command";
+"setup.button.done" = "Done";
+
+// MARK: - Purchase View
+"purchase.title" = "Premium Automation";
+"purchase.subtitle" = "Get full control over automation";
+"purchase.button.buy.price" = "✨ Buy for 999₽";
+"purchase.footer" = "One purchase forever • All features";
+"purchase.button.close" = "Close";
+
+// MARK: - Automation Content
+"automation.content.basic.commands.title" = "Creating Basic Commands";
+"automation.content.basic.commands.subtitle" = "First create commands for enabling and disabling grayscale mode";
+"automation.content.two.shortcuts.title" = "Two Shortcuts";
+"automation.content.two.shortcuts.subtitle" = "Import ready commands for grayscale management";
+"automation.content.enable.grayscale.title" = "Enable Grayscale";
+"automation.content.enable.grayscale.subtitle" = "Activation command";
+"automation.content.restore.colors.title" = "Restore Colors";
+"automation.content.restore.colors.subtitle" = "Deactivation command";
+"automation.content.important.title" = "Important!";
+"automation.content.important.subtitle" = "After importing commands, return to the app and tap the button below";
+"automation.content.confirm.after.adding" = "After adding commands, confirm creation";
+"automation.content.commands.created" = "Commands Created";
+"automation.content.apps.title" = "Apps";
+"automation.content.apps.subtitle" = "Automatic enable on open";
+"automation.content.schedule.title" = "Schedule";
+"automation.content.schedule.subtitle" = "By time of day";
+"automation.content.focus.subtitle" = "System integration";
+"automation.content.location.title" = "Geolocation";
+"automation.content.location.subtitle" = "By location";
+"automation.content.instructions" = "Select automation type and follow instructions. All automations will use your created basic commands.";
+"automation.content.recreate.commands" = "Recreate Commands";
+"automation.content.premium.required" = "Premium Required";
+"automation.content.premium.description" = "Automation is only available for Premium users";
+"automation.content.get.premium" = "Get Premium";
+"automation.content.try.demo" = "Try Demo";
+"automation.content.how.to.setup" = "💡 How to set up automation?";
+"detailed.instructions.useful.tips" = "💡 Useful Tips";
+
+// MARK: - Detailed Instructions
+"detailed.instructions.commands.created.title" = "Commands Already Created";
+"detailed.instructions.commands.created.description" = "Basic commands for enabling and disabling grayscale mode are already added to Shortcuts app";
+"detailed.instructions.open.shortcuts.title" = "Open Shortcuts App";
+"detailed.instructions.open.shortcuts.description" = "Find and launch Shortcuts app on your iPhone";
+"detailed.instructions.create.first.automation.title" = "Create First Automation (Enable)";
+"detailed.instructions.create.first.automation.description" = "Tap the '+' icon and select 'Create Personal Automation'";
+"detailed.instructions.select.app.trigger.title" = "Select 'App' Trigger";
+"detailed.instructions.select.app.trigger.description" = "Scroll down and select 'App' in the 'App' section";
+"detailed.instructions.select.apps.configure.title" = "Select Apps and Configure 'Opens'";
+"detailed.instructions.select.apps.configure.description" = "Select ALL apps for which automation should work (Instagram, TikTok, YouTube, etc.) and make sure 'Opens' is selected";
+"detailed.instructions.add.run.command.title" = "Add 'Run Shortcut' Action";
+"detailed.instructions.add.run.command.description" = "Tap 'Add Action' and find 'Run Shortcut'";
+"detailed.instructions.select.grayscale.on.title" = "Select 'Grayscale On' Command";
+"detailed.instructions.select.grayscale.on.description" = "Select 'Grayscale On' command (enable grayscale mode) from the list";
+"detailed.instructions.disable.confirmation.title" = "Disable Confirmation and Save";
+"detailed.instructions.disable.confirmation.description" = "Turn off 'Ask Before Running' and tap 'Done'";
+"detailed.instructions.create.second.automation.title" = "Create Second Automation (Disable)";
+"detailed.instructions.create.second.automation.description" = "Repeat steps 3-8, but select 'Closes', 'Grayscale Off' command and the same apps";
+"detailed.instructions.test.work.title" = "Test Operation";
+"detailed.instructions.test.work.description" = "Open and close the app - grayscale mode should automatically turn on and off";
+"detailed.instructions.title" = "Detailed Instructions";
+"detailed.instructions.subtitle" = "Step-by-step guide for automation setup";
+"detailed.instructions.tip.two.automations" = "For each app you need to create TWO automations";
+"detailed.instructions.tip.select.all.apps" = "Select ALL needed apps at once in the first automation";
+"detailed.instructions.tip.base.commands.ready" = "Base commands are already created and ready to use";
+"detailed.instructions.tip.same.apps.both" = "Both automations should have the same apps selected";
+"detailed.instructions.navigation.title" = "Instructions";
+"detailed.instructions.button.done" = "Done";
+
+// MARK: - Automation State
+"automation.state.shortcuts.unavailable" = "Shortcuts app unavailable";
+"automation.state.commands.creation.failed" = "Failed to create commands";
+"automation.state.automation.setup.failed" = "Failed to setup automation";
+
+// MARK: - Home View Model
+"home.button.enable.grayscale" = "Enable Grayscale";
+"home.button.setup" = "Setup";
+"home.button.tap.to.toggle" = "Tap to toggle";
+"home.button.add.commands" = "Add Commands";
+
+// MARK: - Automation View Model
+"automation.error.import.enable.failed" = "Failed to import enable command: %@";
+"automation.error.import.disable.failed" = "Failed to import disable command: %@";
+
+// MARK: - Automation Components
+"automation.components.apps.title" = "Apps";
+"automation.components.apps.subtitle" = "Automatic enable on open";
+"automation.components.schedule.title" = "Schedule";
+"automation.components.schedule.subtitle" = "By time of day";
+
+// MARK: - Demo View
+"demo.app.home" = "Home";
+"demo.app.work" = "Work";
+"demo.app.sleep" = "Sleep";
+"demo.content.homescreen" = "Home Screen";
+"demo.content.sleep.mode" = "Sleep Mode";
+
+// MARK: - Automation View
+"automation.view.title" = "Automation";
+
+// MARK: - App Triggers Setup
+"app.triggers.setup.title" = "Step-by-step automation setup";
+"app.triggers.setup.step" = "Step %d of %d";
+"app.triggers.setup.button.back" = "Back";
+"app.triggers.setup.button.next" = "Next";
+"app.triggers.setup.placeholder.title" = "Screenshot or video for this step";
+"app.triggers.setup.video.playing" = "Video playing";
+"app.triggers.setup.screenshot.indicator" = "Screenshot";
+

@@ -22,11 +22,11 @@ struct PurchaseView: View {
                         .font(.system(size: 64))
                         .foregroundColor(DS.Color.accent)
                     
-                    Text("Premium Автоматизация")
+                    Text(LocalizedStringKey("purchase.title"))
                         .font(.title.weight(.bold))
                         .multilineTextAlignment(.center)
                     
-                    Text("Получите полный контроль над автоматизацией")
+                    Text(LocalizedStringKey("purchase.subtitle"))
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -36,26 +36,26 @@ struct PurchaseView: View {
                 VStack(spacing: 16) {
                     PurchaseFeature(
                         icon: "clock.fill",
-                        title: "Автоматическое расписание",
-                        description: "Включение/выключение по времени"
+                        title: "purchase.feature.schedule.title",
+                        description: "purchase.feature.schedule.description"
                     )
                     
                     PurchaseFeature(
                         icon: "apps.iphone",
-                        title: "Smart триггеры приложений",
-                        description: "Автоматика для TikTok, Instagram и других"
+                        title: "purchase.feature.apps.title",
+                        description: "purchase.feature.apps.description"
                     )
                     
                     PurchaseFeature(
                         icon: "moon.zzz.fill",
-                        title: "Focus режимы",
-                        description: "Интеграция с режимами концентрации"
+                        title: "purchase.feature.focus.title",
+                        description: "purchase.feature.focus.description"
                     )
                     
                     PurchaseFeature(
                         icon: "location.fill",
-                        title: "Геолокация",
-                        description: "Автоматизация по местоположению"
+                        title: "purchase.feature.location.title",
+                        description: "purchase.feature.location.description"
                     )
                 }
                 
@@ -69,7 +69,7 @@ struct PurchaseView: View {
                         appState.purchasePremium()
                         dismiss()
                     } label: {
-                        Text("✨ Купить за 999₽")
+                        Text(LocalizedStringKey("purchase.button.buy.price"))
                             .font(.headline.weight(.semibold))
                             .frame(maxWidth: .infinity)
                             .frame(height: 56)
@@ -79,7 +79,7 @@ struct PurchaseView: View {
                             .shadow(color: DS.Shadow.soft, radius: 12, x: 0, y: 4)
                     }
                     
-                    Text("Одна покупка навсегда • Весь функционал")
+                    Text(LocalizedStringKey("purchase.footer"))
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -87,7 +87,7 @@ struct PurchaseView: View {
             }
             .padding(.horizontal, 20)
             .navigationBarItems(
-                leading: Button("Закрыть") { dismiss() }
+                leading: Button(LocalizedStringKey("purchase.button.close")) { dismiss() }
             )
         }
         .navigationViewStyle(.stack)
@@ -110,11 +110,11 @@ struct PurchaseFeature: View {
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             
             VStack(spacing: 4) {
-                Text(title)
+                Text(LocalizedStringKey(title))
                     .font(.subheadline.weight(.medium))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(description)
+                Text(LocalizedStringKey(description))
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
