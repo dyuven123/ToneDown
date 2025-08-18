@@ -232,29 +232,38 @@ struct AutomationContent: View {
                 }
                 .buttonStyle(.plain)
                 
-                ModernAutomationCard(
-                    icon: "clock.fill",
-                    title: "automation.content.schedule.title",
-                    subtitle: "automation.content.schedule.subtitle",
-                    color: .orange,
-                    isEnabled: true
-                )
+                NavigationLink(destination: ScheduleAutomationView()) {
+                    ModernAutomationCard(
+                        icon: "clock.fill",
+                        title: "automation.content.schedule.title",
+                        subtitle: "automation.content.schedule.subtitle",
+                        color: .orange,
+                        isEnabled: true
+                    )
+                }
+                .buttonStyle(.plain)
                 
-                ModernAutomationCard(
-                    icon: "moon.zzz.fill",
-                    title: "Focus",
-                    subtitle: "automation.content.focus.subtitle",
-                    color: .indigo,
-                    isEnabled: true
-                )
+                NavigationLink(destination: FocusAutomationView()) {
+                    ModernAutomationCard(
+                        icon: "moon.zzz.fill",
+                        title: "Focus",
+                        subtitle: "automation.content.focus.subtitle",
+                        color: .indigo,
+                        isEnabled: true
+                    )
+                }
+                .buttonStyle(.plain)
                 
-                ModernAutomationCard(
-                    icon: "location.fill",
-                    title: "automation.content.location.title",
-                    subtitle: "automation.content.location.subtitle",
-                    color: .green,
-                    isEnabled: true
-                )
+                NavigationLink(destination: LocationAutomationView()) {
+                    ModernAutomationCard(
+                        icon: "location.fill",
+                        title: "automation.content.location.title",
+                        subtitle: "automation.content.location.subtitle",
+                        color: .green,
+                        isEnabled: true
+                    )
+                }
+                .buttonStyle(.plain)
             }
             .padding(.horizontal, 20)
             

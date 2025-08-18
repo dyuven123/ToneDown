@@ -379,3 +379,74 @@
 "app.triggers.setup.placeholder.title" = "Screenshot or video for this step";
 "app.triggers.setup.video.playing" = "Video playing";
 
+// MARK: - Schedule Automation Setup
+"schedule.setup.title" = "Schedule Automation Setup";
+"schedule.setup.step1.title" = "Create first automation (enable)";
+"schedule.setup.step1.description" = "• Tap the '+' icon or 'New Automation'\n• Select 'Time of Day'";
+"schedule.setup.step1.action" = "Create automation";
+"schedule.setup.step2.title" = "Select time and configure trigger";
+"schedule.setup.step2.description" = "• Choose the time when grayscale should be enabled (e.g., 21:00)\n• Enable 'Repeat' and select 'Daily'";
+"schedule.setup.step2.action" = "Configure time and trigger";
+"schedule.setup.step3.title" = "Select 'Grayscale On' command";
+"schedule.setup.step3.description" = "• Select 'Grayscale On' command (enable grayscale mode) from your commands list\n• If command not found, return to command creation screen";
+"schedule.setup.step3.action" = "Select command";
+"schedule.setup.step4.title" = "Create second automation (disable)";
+"schedule.setup.step4.description" = "• Tap the '+' icon and select 'Time of Day'";
+"schedule.setup.step4.action" = "Create automation";
+"schedule.setup.step5.title" = "Configure disable time";
+"schedule.setup.step5.description" = "• Choose the time when grayscale should be disabled (e.g., 8:00)\n• Enable 'Repeat' and select 'Daily'";
+"schedule.setup.step5.action" = "Configure time";
+"schedule.setup.step6.title" = "Select 'Grayscale Off' command";
+"schedule.setup.step6.description" = "• Select 'Grayscale Off' command (disable grayscale mode) from your commands list\n• This will automatically disable grayscale mode at the specified time";
+"schedule.setup.step6.action" = "Select command";
+"schedule.setup.step7.title" = "Test automation";
+"schedule.setup.step7.description" = "• Wait for the scheduled time or manually trigger the automation\n• Screen should become gray at enable time and return to normal at disable time\n• If something doesn't work, return to the corresponding setup steps";
+"schedule.setup.step7.action" = "Test";
+
+// MARK: - Focus Automation Setup
+"focus.setup.title" = "Focus Mode Automation Setup";
+"focus.setup.step1.title" = "Create first automation (enable)";
+"focus.setup.step1.description" = "• Tap the '+' icon or 'New Automation'\n• Select 'Focus'";
+"focus.setup.step1.action" = "Create automation";
+"focus.setup.step2.title" = "Select focus mode and configure trigger";
+"focus.setup.step2.description" = "• Choose the focus mode (Work, Sleep, Do Not Disturb, etc.)\n• Select 'When Turning On'";
+"focus.setup.step2.action" = "Configure focus and trigger";
+"focus.setup.step3.title" = "Select 'Grayscale On' command";
+"focus.setup.step3.description" = "• Select 'Grayscale On' command (enable grayscale mode) from your commands list\n• If command not found, return to command creation screen";
+"focus.setup.step3.action" = "Select command";
+"focus.setup.step4.title" = "Create second automation (disable)";
+"focus.setup.step4.description" = "• Tap the '+' icon and select 'Focus'";
+"focus.setup.step4.action" = "Create automation";
+"focus.setup.step5.title" = "Configure focus off trigger";
+"focus.setup.step5.description" = "• Choose the same focus mode as in step 2\n• Select 'When Turning Off'";
+"focus.setup.step5.action" = "Configure trigger";
+"focus.setup.step6.title" = "Select 'Grayscale Off' command";
+"focus.setup.step6.description" = "• Select 'Grayscale Off' command (disable grayscale mode) from your commands list\n• This will automatically disable grayscale mode when focus mode is turned off";
+"focus.setup.step6.action" = "Select command";
+"focus.setup.step7.title" = "Test automation";
+"focus.setup.step7.description" = "• Turn on the selected focus mode - screen should become gray\n• Turn off the focus mode - screen should return to normal colors\n• If something doesn't work, return to the corresponding setup steps";
+"focus.setup.step7.action" = "Test";
+
+// MARK: - Location Automation Setup
+"location.setup.title" = "Location Automation Setup";
+"location.setup.step1.title" = "Create first automation (enable)";
+"location.setup.step1.description" = "• Tap the '+' icon or 'New Automation'\n• Select 'Location'";
+"location.setup.step1.action" = "Create automation";
+"location.setup.step2.title" = "Select location and configure trigger";
+"location.setup.step2.description" = "• Choose 'Arrive' or 'Leave' for the location\n• Select the specific location (home, work, gym, etc.)\n• Set the radius for the location trigger";
+"location.setup.step2.action" = "Configure location and trigger";
+"location.setup.step3.title" = "Select 'Grayscale On' command";
+"location.setup.step3.description" = "• Select 'Grayscale On' command (enable grayscale mode) from your commands list\n• If command not found, return to command creation screen";
+"location.setup.step3.action" = "Select command";
+"location.setup.step4.title" = "Create second automation (disable)";
+"location.setup.step4.description" = "• Tap the '+' icon and select 'Location'";
+"location.setup.step4.action" = "Create automation";
+"location.setup.step5.title" = "Configure exit location trigger";
+"location.setup.step5.description" = "• Choose the opposite trigger (if first was 'Arrive', select 'Leave')\n• Select the same location as in step 2";
+"location.setup.step5.action" = "Configure trigger";
+"location.setup.step6.title" = "Select 'Grayscale Off' command";
+"location.setup.step6.description" = "• Select 'Grayscale Off' command (disable grayscale mode) from your commands list\n• This will automatically disable grayscale mode when leaving the location";
+"location.setup.step6.action" = "Select command";
+"location.setup.step7.title" = "Test automation";
+"location.setup.step7.description" = "• Visit the selected location - screen should become gray\n• Leave the location - screen should return to normal colors\n• If something doesn't work, return to the corresponding setup steps";
+"location.setup.step7.action" = "Test";
