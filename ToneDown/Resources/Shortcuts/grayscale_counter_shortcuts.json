@@ -1,0 +1,180 @@
+{
+  "shortcuts": [
+    {
+      "name": "ToneDown Enable Grayscale",
+      "description": "Включает grayscale режим и увеличивает счетчик",
+      "version": "1.0",
+      "actions": [
+        {
+          "type": "setVariable",
+          "name": "automationType",
+          "value": "focus"
+        },
+        {
+          "type": "setVariable", 
+          "name": "reason",
+          "value": "Focus mode activated"
+        },
+        {
+          "type": "setGrayscale",
+          "enabled": true
+        },
+        {
+          "type": "getFile",
+          "path": "grayscaleCounter",
+          "source": "App Group"
+        },
+        {
+          "type": "if",
+          "condition": "File Exists",
+          "actions": [
+            {
+              "type": "getDictionaryFromInput"
+            },
+            {
+              "type": "getValueForKey",
+              "key": "counter"
+            },
+            {
+              "type": "calculate",
+              "operation": "add",
+              "value": 1
+            },
+            {
+              "type": "setDictionaryValue",
+              "key": "counter",
+              "value": "Calculation Result"
+            }
+          ]
+        },
+        {
+          "type": "else",
+          "actions": [
+            {
+              "type": "createDictionary",
+              "items": [
+                {"key": "counter", "value": 1},
+                {"key": "lastUpdate", "value": "Current Date"},
+                {"key": "automationType", "value": "Variable: automationType"},
+                {"key": "action", "value": "increment"},
+                {"key": "reason", "value": "Variable: reason"}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "saveFile",
+          "path": "grayscaleCounter",
+          "source": "App Group"
+        },
+        {
+          "type": "showNotification",
+          "title": "Grayscale Enabled",
+          "body": "Counter: {{Dictionary Value: counter}}"
+        }
+      ]
+    },
+    {
+      "name": "ToneDown Disable Grayscale", 
+      "description": "Выключает grayscale режим и уменьшает счетчик",
+      "version": "1.0",
+      "actions": [
+        {
+          "type": "setVariable",
+          "name": "automationType",
+          "value": "focus"
+        },
+        {
+          "type": "setVariable",
+          "name": "reason", 
+          "value": "Focus mode deactivated"
+        },
+        {
+          "type": "getFile",
+          "path": "grayscaleCounter",
+          "source": "App Group"
+        },
+        {
+          "type": "if",
+          "condition": "File Exists",
+          "actions": [
+            {
+              "type": "getDictionaryFromInput"
+            },
+            {
+              "type": "getValueForKey",
+              "key": "counter"
+            },
+            {
+              "type": "calculate",
+              "operation": "subtract",
+              "value": 1
+            },
+            {
+              "type": "if",
+              "condition": "Calculation Result < 0",
+              "actions": [
+                {
+                  "type": "setVariable",
+                  "name": "newCounter",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "type": "else",
+              "actions": [
+                {
+                  "type": "setVariable",
+                  "name": "newCounter",
+                  "value": "Calculation Result"
+                }
+              ]
+            },
+            {
+              "type": "setDictionaryValue",
+              "key": "counter",
+              "value": "Variable: newCounter"
+            }
+          ]
+        },
+        {
+          "type": "saveFile",
+          "path": "grayscaleCounter",
+          "source": "App Group"
+        },
+        {
+          "type": "if",
+          "condition": "Dictionary Value: counter = 0",
+          "actions": [
+            {
+              "type": "setGrayscale",
+              "enabled": false
+            }
+          ]
+        },
+        {
+          "type": "showNotification",
+          "title": "Grayscale Counter Updated",
+          "body": "New counter: {{Dictionary Value: counter}}"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-08-10",
+    "description": "Команды Shortcuts для ToneDown с системой счетчика grayscale",
+    "requirements": [
+      "App Groups capability",
+      "Accessibility permissions",
+      "iOS 14.0+"
+    ],
+    "setup": [
+      "1. Настройте App Groups в Xcode",
+      "2. Импортируйте команды в Shortcuts",
+      "3. Настройте автоматизации для Focus/Location/Schedule",
+      "4. Протестируйте работу команд"
+    ]
+  }
+}

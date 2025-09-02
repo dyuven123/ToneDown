@@ -35,8 +35,8 @@ enum ShortcutsRunner {
     }
     
     // MARK: - Base Commands Import (Enable/Disable Grayscale)
-    private static let baseEnableLink = "https://www.icloud.com/shortcuts/1c127f9a94a144e1b8402de949c70d9b"
-    private static let baseDisableLink = "https://www.icloud.com/shortcuts/fad6a725d00a4ecfb771a26798e051bf"
+    private static let baseEnableLink = "https://www.icloud.com/shortcuts/dfedc28bc4b041a9957b1e8e319c662a"
+    private static let baseDisableLink = "https://www.icloud.com/shortcuts/07dd970285fe4c9fa2d7984af849707f"
     
     static func importBaseEnableCommand() {
         openShortcutImport(from: baseEnableLink)
@@ -73,11 +73,7 @@ enum ShortcutsRunner {
         .youtube:   "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456"
     ]
     
-    private static let appDisableLinks: [AppShortcut: String] = [
-        .instagram: "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456",
-        .tiktok:    "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456",
-        .youtube:   "https://www.icloud.com/shortcuts/20c81061b1d946bb909f064b709ab456"
-    ]
+
     
     static func openAppSpecificShortcut(_ app: AppShortcut, action: ShortcutAction) {
         let link: String?
@@ -85,7 +81,7 @@ enum ShortcutsRunner {
         case .enableGrayscale:
             link = appEnableLinks[app]
         case .disableGrayscale:
-            link = appDisableLinks[app]
+            link = baseDisableLink
         }
         guard let link, !link.isEmpty else { return }
         openShortcutImport(from: link)

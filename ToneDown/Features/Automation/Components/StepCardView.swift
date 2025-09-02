@@ -115,8 +115,8 @@ private struct VideoPlayerView: View {
     var body: some View {
         VStack(spacing: 0) {
             VideoPlayer(player: getOrCreatePlayer(stepNumber, videoURL))
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: .infinity, maxHeight: 300)
+                .aspectRatio(9/16, contentMode: .fit)
+                .frame(maxHeight: .infinity)
                 .background(
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .fill(
